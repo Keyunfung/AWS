@@ -47,7 +47,7 @@ def updatesalaryinfo():
         cursor = db_conn.cursor()
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
         try:
-            cursor.execute(select_sql, (emp_id, monthly_salary))
+            cursor.execute(select_sql, (emp_id, payroll_month))
         finally:
             cursor.close()
 
