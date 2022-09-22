@@ -2,7 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Hero - Payroll</title>
+	<!--Change TITLE-->
+    <title>Hero </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="home-touch-icon" href="static/image/logo-icon.png"/>
@@ -63,35 +64,44 @@
     </nav>
     <!-- Close Header -->
 
-	<!--Start Payroll-->
-    <section class="container overflow-hidden py-5">
-        <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
-            <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
-                <a href="/payroll/addsalary" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                    <img class="service card-img" src="{{ url_for('static', filename='/image/services-01.jpg')}}" alt="Card image">
-                    <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                        <div class="service-work-content text-left text-light">
-                            <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Generate Payroll</span>
-                            <p class="card-text">Generate payroll to employee</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+	<!-- Start Content -->
+		<!-- Start Calculate Payroll -->
+    <section class="container py-5">
 
-            <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
-                <a href="/payroll/updatesalary" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                    <img class="card-img" src="{{ url_for('static', filename='/image/recent-work-03.jpg')}}" alt="Card image">
-                    <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                        <div class="service-work-content text-left text-light">
-                            <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Update Salary</span>
-                            <p class="card-text">Update salary to employee</p>
+        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">Generate Payroll</h1>
+        <p class="col-12 col-xl-8 text-left text-muted pb-5 light-700">
+            Generate Payroll to employee
+        </p>
+
+        <div class="row pb-4">
+            <!-- Start Update Payroll -->
+			<form action="/payroll/updatesalary/info" autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
+            <div class="col-lg-8 ">
+                    <div class="col-lg-6 mb-4">
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="Employee ID">
+                            <label for="floatingid light-300">Employee ID</label>
                         </div>
+                    </div><!-- End Input Employee ID -->
+
+                    <div class="col-lg-6 mb-4">
+                        <div class="form-floating mb-4">
+                            <input type="month" class="form-control form-control-lg light-300" id="payroll_month" name="payroll_month" placeholder="Payroll (month and year)">
+                            <label for="payrollmonth">Payroll (month and year)</label>
+                        </div>
+                    </div><!-- End Input Payroll (month and year) -->
+
+                    <div class="col-md-12 col-12 m-auto text-end">
+                        <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Submit</button>
                     </div>
-                </a>
+
+                </form>
             </div>
+            <!-- End Update Payroll -->
         </div>
     </section>
-	<!-- End Payroll -->
+    <!-- End Calculate Payroll -->
+    <!-- End Content -->
 
     <!-- Start Footer -->
     <footer class="bg-secondary pt-4">
@@ -199,7 +209,6 @@
 
     </footer>
     <!-- End Footer -->
-
 
     <!-- Bootstrap -->
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
