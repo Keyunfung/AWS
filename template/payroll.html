@@ -10,12 +10,12 @@
     <!-- Load Require CSS -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font CSS -->
-    <link href="static/css/boxicon.min.css" rel="stylesheet">
+    <link type= "text/css" href="{{ url_for('static',filename='css/boxicon.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
-    <link rel="stylesheet" href="static/css/templatemo.css">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/templatemo.css') }}">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/css/custom.css">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='css/custom.css') }">
 </head>
 
 <body>
@@ -207,11 +207,11 @@
 
 
     <!-- Bootstrap -->
-    <script src="static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='bootstrap.bundle.min.js')}}"></script>
     <!-- Load jQuery require for isotope -->
-    <script src="static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery.min.js')}}"></script>
     <!-- Isotope -->
-    <script src="static/js/isotope.pkgd.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='isotope.pkgd.js')}}"></script>
     <!-- Page Script -->
     <script>
         $(window).load(function() {
@@ -234,9 +234,9 @@
         });
     </script>
     <!-- Templatemo -->
-    <script type="text/js" src="{{ url_for('static', filename='templatemo.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='templatemo.js')}}"></script>
     <!-- Custom -->
-    <script type="text/js" src="{{ url_for('static', filename='custom.js')}}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='custom.js')}}"></script>
 
 </body>
 
