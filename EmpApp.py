@@ -43,16 +43,15 @@ def updatesalaryinfo():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
-        insert_sql = "INSERT INTO payroll VALUES (%s, %s, %s, %s, %s, %s)"
+        
         cursor = db_conn.cursor()
+        select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
         try:
-            cursor.execute(insert_sql, (emp_id, work_day, hour_rate, hour_work, payroll_month, monthly_salary))
-            db_conn.commit()
+            cursor.execute(select_sql, (emp_id, monthly_salary))
         finally:
             cursor.close()
 
-        return render_template('update-salary-payroll.html', title = 'New Payroll added successfully', emp_id = emp_id,
-        payroll_month = payroll_month, monthly_salary = monthly_salary)
+        return render_template('update-salary-payroll.html')
     else:
         emp_id = request.args.get('emp_id')
         payroll_month = request.args.get('payroll_month')
