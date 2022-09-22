@@ -35,11 +35,11 @@ def addsalary():
     return render_template('calculate-payroll.html')
 
 @app.route("/payroll/updatesalary", methods=['GET','POST'])
-def addsalary():
+def updatesalary():
     return render_template('update-payroll.html')
 
 @app.route("/payroll/updatesalary/info", methods=['GET','POST'])
-def salary():
+def updatesalaryinfo():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
@@ -59,7 +59,7 @@ def salary():
         return render_template('update-salary-payroll.html')
 
 @app.route("/payroll/addsalary/results", methods=['GET','POST'])
-def salary():
+def salaryresult():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         work_day = float(request.form['work_day'])
