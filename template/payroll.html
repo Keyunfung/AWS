@@ -65,10 +65,10 @@
 
 	<!--Start Payroll-->
     <section class="container overflow-hidden py-5">
-        <div class="row gx-3 gx-sm-1 gx-lg-3 gy-lg-3 gy-1 pb-1 projects">
-            <div class="col-sm-6">
-                <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                    <img class="rounded float-left"src="D:\Le Hui\College\Cloud Computing\Assignment\website\assets\img\services-01.jpg" alt="Card image">
+        <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
+            <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
+                <a href="/payroll/addsalary" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                    <img class="service card-img" src="{{ url_for('static', filename='/image/services-01.jpg')}}" alt="Card image">
                     <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="service-work-content text-left text-light">
                             <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Generate Payroll</span>
@@ -78,9 +78,9 @@
                 </a>
             </div>
 
-            <div class="col-sm-6">
+            <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
                 <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                    <img class="rounded float-right" src="D:\Le Hui\College\Cloud Computing\Assignment\website\assets\img\recent-work-03.jpg" alt="Card image">
+                    <img class="card-img" src="{{ url_for('static', filename='/image/recent-work-03.jpg')}}" alt="Card image">
                     <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="service-work-content text-left text-light">
                             <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Update Salary</span>
