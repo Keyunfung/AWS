@@ -23,20 +23,21 @@
     <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand h1" href="/">
-                <!-- <i class='bx bx-buildings bx-sm text-dark'></i> -->
-				<img src="{{ url_for('static', filename='/image/logo-icon.png')}}" alt="Logo">
+                <img src="{{ url_for('static', filename='/image/logo-icon.png')}}" alt="Logo">
                 <span class="text-dark h4">Hero</span>
-				<!-- <span class="text-primary h4">Buzz</span> -->
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+            <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-primary rounded-pill px-3" href="/">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-outline-primary rounded-pill px-3" href="/">Employee</a>
@@ -52,12 +53,18 @@
                         </li>
                     </ul>
                 </div>
-			</div>
+                <div class="navbar align-self-center d-flex">
+                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-primary'></i></a>
+                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-primary'></i></a>
+                    <a class="nav-link" href="#"><i class='bx bx-user-circle bx-sm text-primary'></i></a>
+                </div>
+            </div>
         </div>
     </nav>
     <!-- Close Header -->
-	
-	<section class="container overflow-hidden py-5">
+
+	<!--Payroll-->
+    <section class="container overflow-hidden py-5">
         <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
             <!-- Start Recent Work -->
             <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
@@ -70,7 +77,8 @@
                         </div>
                     </div>
                 </a>
-            </div><!-- End Recent Work -->
+            </div>
+			<!-- End Recent Work -->
 
             <!-- Start Recent Work -->
             <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
@@ -83,9 +91,12 @@
                         </div>
                     </div>
                 </a>
-            </div><!-- End Recent Work -->
+            </div>
+			<!-- End Recent Work -->
         </div>
     </section>
+
+
 
     <!-- Start Footer -->
     <footer class="bg-secondary pt-4">
@@ -193,9 +204,9 @@
 
     </footer>
     <!-- End Footer -->
-</body>
 
-	<!-- Bootstrap -->
+
+    <!-- Bootstrap -->
     <script src="static/js/bootstrap.bundle.min.js"></script>
     <!-- Load jQuery require for isotope -->
     <script src="static/js/jquery.min.js"></script>
@@ -226,4 +237,7 @@
     <script type="text/js" src="{{ url_for('static', filename='templatemo.js')}}"></script>
     <!-- Custom -->
     <script type="text/js" src="{{ url_for('static', filename='custom.js')}}"></script>
+
+</body>
+
 </html>
