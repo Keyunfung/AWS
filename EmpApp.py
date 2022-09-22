@@ -20,7 +20,7 @@ db_conn = connections.Connection(
 
 )
 output = {}
-table = 'payroll'
+table = 'employee'
 
 @app.route("/")
 def home():
