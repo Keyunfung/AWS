@@ -30,16 +30,16 @@ def home():
 def payroll():
     return render_template('payroll.html')
 
-@app.route("/payroll/addsalary", methods=['GET','POST'])
-def addsalary():
+@app.route("/payroll/generatepayroll", methods=['GET','POST'])
+def payrollgeneratepayroll():
     return render_template('calculate-payroll.html')
 
-@app.route("/payroll/updatesalary", methods=['GET','POST'])
-def updatesalary():
+@app.route("/payroll/update", methods=['GET','POST'])
+def payrollupdate():
     return render_template('update-payroll.html')
 
-@app.route("/payroll/updatesalary/info", methods=['GET','POST'])
-def updatesalaryinfo():
+@app.route("/payroll/update/info", methods=['GET','POST'])
+def payrollupdateinfo():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
@@ -57,8 +57,27 @@ def updatesalaryinfo():
         payroll_month = request.args.get('payroll_month')
         return render_template('update-salary-payroll.html')
 
-@app.route("/payroll/addsalary/results", methods=['GET','POST'])
-def salaryresult():
+@app.route("/payroll/update/info/updatepayroll", methods=['GET','POST'])
+def payrollupdateinfoupdatepayroll():
+    if request.method == 'POST':
+        emp_id = request.form['emp_id']
+        payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
+        
+        cursor = db_conn.cursor()
+        select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
+        try:
+            cursor.execute(select_sql, (emp_id, payroll_month))
+        finally:
+            cursor.close()
+
+        return render_template('update-salary-payroll.html')
+    else:
+        emp_id = request.args.get('emp_id')
+        payroll_month = request.args.get('payroll_month')
+        return render_template('update-salary-payroll.html')
+
+@app.route("/payroll/generatepayroll/results", methods=['GET','POST'])
+def generatepayrollresult():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         work_day = float(request.form['work_day'])
@@ -68,13 +87,13 @@ def salaryresult():
         monthly_salary = work_day * hour_work * hour_rate
         insert_sql = "INSERT INTO payroll VALUES (%s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
+        
         try:
             cursor.execute(insert_sql, (emp_id, work_day, hour_rate, hour_work, payroll_month, monthly_salary))
             db_conn.commit()
         finally:
             cursor.close()
-
-        print("all modification done...")
+            
         return render_template('payroll-output.html', title = 'New Payroll added successfully', emp_id = emp_id,
         payroll_month = payroll_month, monthly_salary = monthly_salary)
     else:
