@@ -65,30 +65,34 @@ def payrollupdateinfo():
         finally:
             cursor.close()
 
-        return render_template('update-salary-payroll.html')
+        return render_template('update-salary-payroll.html', emp_id = emp_id, payroll_month = payroll_month)
     else:
         emp_id = request.args.get('emp_id')
         payroll_month = request.args.get('payroll_month')
-        return render_template('update-salary-payroll.html')
+        return render_template('update-salary-payroll.html', emp_id = emp_id, payroll_month = payroll_month)
 
 @app.route("/payroll/update/info/updatepayroll", methods=['GET','POST'])
 def payrollupdateinfoupdatepayroll():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
+        work_day = float(request.form['work_day'])
+        hour_rate = float(request.form['hour_rate'])  
+        hour_work = float(request.form['hour_work'])
         payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
+        monthly_salary = work_day * hour_work * hour_rate
         
         cursor = db_conn.cursor()
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
         try:
-            cursor.execute(select_sql, (emp_id, payroll_month))
+            cursor.execute ("update payroll set monthly_salary = monthly_salary, work_day = work_day, hour_rate = hour_rate, hour_work = hour_work")
         finally:
             cursor.close()
 
-        return render_template('update-salary-payroll.html')
+        return render_template('update-salary-payroll.html', emp_id = emp_id, payroll_month = payroll_month)
     else:
         emp_id = request.args.get('emp_id')
         payroll_month = request.args.get('payroll_month')
-        return render_template('update-salary-payroll.html')
+        return render_template('update-salary-payroll.html', emp_id = emp_id, payroll_month = payroll_month)
 
 @app.route("/payroll/generatepayroll/results", methods=['GET','POST'])
 def generatepayrollresult():
