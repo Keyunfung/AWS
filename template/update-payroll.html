@@ -65,6 +65,43 @@
     <!-- Close Header -->
 
 	<!-- Start Content -->
+	<section class="container py-5">
+
+        <h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">Update Payroll</h1>
+        <p class="col-12 col-xl-8 text-left text-muted pb-5 light-700">
+            Update Payroll for employee
+        </p>
+
+        <div class="row pb-4">
+            <!-- Start Generate Payroll -->
+			<form action="/payroll/updatesalary/info" autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
+            <div class="col-lg-8 ">
+                    <div class="col-12">
+						<div class="form-floating mb-4">
+                            <input type="text" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="Employee ID">
+                            <label for="floatingid light-300">Employee ID</label>
+                        </div>
+                    </div>
+					<!-- End Input Employee ID -->
+
+					<div class="col-12">
+						<div class="form-floating mb-4">
+                            <input type="month" class="form-control form-control-lg light-300" id="payroll_month" name="payroll_month" placeholder="Payroll (month and year)">
+                            <label for="payrollmonth">Payroll (month and year)</label>
+                        </div>
+                    </div>
+					<!-- End Input Payroll (month and year) -->
+
+                    <div class="col-md-12 col-12 m-auto text-end">
+                        <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+            <!-- End Generate Payroll -->
+        </div>
+    </section>
+	
 		<!-- Start Calculate Payroll -->
     <section class="container py-5">
 
@@ -75,18 +112,18 @@
 
         <div class="row pb-4">
             <!-- Start Update Payroll -->
-			<form action="/payroll/update/info" autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
+			<form action="/payroll/updatesalary/info" autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
             <div class="col-lg-8 ">
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating mb-4">
+					<div class="col-12">
+						<div class="form-floating mb-4">
                             <input type="text" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="Employee ID">
                             <label for="floatingid light-300">Employee ID</label>
                         </div>
                     </div>
 					<!-- End Input Employee ID -->
 
-                    <div class="col-lg-6 mb-4">
-                        <div class="form-floating mb-4">
+					<div class="col-12">
+						<div class="form-floating mb-4">
                             <input type="month" class="form-control form-control-lg light-300" id="payroll_month" name="payroll_month" placeholder="Payroll (month and year)">
                             <label for="payrollmonth">Payroll (month and year)</label>
                         </div>

@@ -66,40 +66,48 @@
 
 	<!-- Start Content -->
 		<!-- Start Calculate Payroll -->
-		<div class="row pb-4">
-			<div class="col-lg-8 ">
-				<p class="text-lg-start text-center text-light light-300">Update Salary for {{ emp_id }} in {{payroll_month}}.</p>
-				
-				<div class="col-12">
+		<section class="container py-5">
+		
+		<h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">Update Salary</h1>
+        <p class="col-12 col-xl-8 text-left text-muted pb-5 light-700">Update Salary for {{ emp_id }} in {{payroll_month}}.</p>
+
+        <div class="row pb-4">
+            <!-- Start Generate Payroll -->
+			<form action="/payroll/addsalary/results" autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
+				<div class="col-lg-8 ">
+                    <div class="col-12">
 					<div class="form-floating mb-4">
 						<input type="text" class="form-control form-control-lg light-300" id="work_day" name="work_day" placeholder="Working day per week" value = "{{ work_day }}">
 						<label for="floatingworkday light-300">Working day per week</label>
 					</div>
-				</div>
-				<!-- End Input Working day per week -->
-				
-				<div class="col-12">
-					<div class="form-floating mb-4">
-						<input type="text" class="form-control form-control-lg light-300" id="hour_rate" name="hour_rate" placeholder="Hourly Rate" value = "{{ hour_rate }}">
-						<label for="floatinghourrate light-300">Hourly Rate</label>
 					</div>
-				</div>
-				<!-- End Input Hourly Rate -->
+					<!-- End Input Working day per week -->
+					
+					<div class="col-12">
+						<div class="form-floating mb-4">
+							<input type="text" class="form-control form-control-lg light-300" id="hour_rate" name="hour_rate" placeholder="Hourly Rate" value = "{{ hour_rate }}">
+							<label for="floatinghourrate light-300">Hourly Rate</label>
+						</div>
+					</div>
+					<!-- End Input Hourly Rate -->
 
-				<div class="col-12">
-					<div class="form-floating mb-4">
-						<input type="text" class="form-control form-control-lg light-300" id="hour_work" name="hour_work" placeholder="Hours Work" value = "{{ hour_work }}">
-						<label for="floatinghourwork light-300">Hours Work</label>
+					<div class="col-12">
+						<div class="form-floating mb-4">
+							<input type="text" class="form-control form-control-lg light-300" id="hour_work" name="hour_work" placeholder="Hours Work" value = "{{ hour_work }}">
+							<label for="floatinghourwork light-300">Hours Work</label>
+						</div>
 					</div>
+					<!-- End Input Hours Work -->
+					
+					<div class="col-md-12 col-12 m-auto text-end">
+						<button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Update</button>
+					</div>															
+
+					</form>
 				</div>
-				<!-- End Input Hours Work -->
-				
-				<div class="col-md-12 col-12 m-auto text-end">
-					<button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Update</button>
-				</div>
+				<!-- End Generate Payroll -->
 			</div>
-		</div>	
-		<!-- End Calculate Payroll -->
+		</section>
     <!-- End Content -->
 
     <!-- Start Footer -->
