@@ -65,16 +65,21 @@
     <!-- Close Header -->
 
 	<!-- Start Content -->
-		<center>
-			<div bgcolor="lightgrey"><br><br><br>
-				<h2>{{ errorMsg }}</h2><br><br><br>
-				<br><br><br>
+		<section class="container py-5">
+		
+		<h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">{{ errorMsg }}</h1>
+
+        <div class="row pb-4">
+			<form action="/payroll/addsalary/results" autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
+				<div class="col-lg-8 ">
+					<div class="col-md-12 col-12 m-auto text-end">
+						<button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Update</button>
+					</div>															
+
+					</form>
+				</div>
 			</div>
-			
-		</center>
-		<form action='{{ action }}' autocomplete="on" method = "POST">
-			<button type="submit"> BACK</button>
-		</form>
+		</section>
     <!-- End Content -->
 
     <!-- Start Footer -->
