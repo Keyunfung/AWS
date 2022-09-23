@@ -44,7 +44,7 @@ def payrollupdateinfo():
         emp_id = request.form['emp_id']
         payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
         
-        if emp_id == ""
+        if emp_id == "":
             errorMessage = "Please fill in Employee ID"
             action = "/payroll/update"
             return render_template('ErrorPage.html', errorMsg = errorMessage, action = action)
