@@ -47,12 +47,12 @@ def payrollupdateinfo():
         if emp_id == "":
             errorMessage = "Please fill in Employee ID"
             action = "/payroll/update"
-            return render_template('ErrorPage.html', errorMsg = errorMessage, action = action)
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         if payroll_month == "":
             errorMessage = "Please fill in month for payroll"
             action = "/payroll/update"
-            return render_template('ErrorPage.html', errorMsg = errorMessage, action = action)
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         cursor = db_conn.cursor()
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
@@ -61,7 +61,7 @@ def payrollupdateinfo():
             if cursor.rowcount == 0:
                 errorMessage = "The employee ID does not exist"
                 action = "/payroll/update"
-                return render_template('ErrorPage.html', errorMsg = errorMessage, action = action)
+                return render_template('error-message.html', errorMsg = errorMessage, action = action)
         finally:
             cursor.close()
 
