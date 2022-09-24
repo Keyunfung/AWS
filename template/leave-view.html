@@ -80,30 +80,21 @@
                 <th class="custom-leave-col2"><b>UPDATE TIME</b></th>
             </tr>
             <tr>
-                <td class="custom-leave-col1">E0001</td>
+                <td class="custom-leave-col1">{{ emp_id }}</td>
                 <td class="custom-leave-col1">Name</td>
-                <td class="custom-leave-col1">01/01/2022</td>
-                <td class="custom-leave-col1">10/01/2022</td>
-                <td class="custom-leave-col1">Covid</td>
-                <td class="custom-leave-col1">Approved</td>
-                <td class="custom-leave-col2">25/09/2022 00:00:00</td>
-            </tr>
-            <tr>
-                <td class="custom-leave-col1">E0001</td>
-                <td class="custom-leave-col1">Name</td>
-                <td class="custom-leave-col1">01/01/2022</td>
-                <td class="custom-leave-col1">10/01/2022</td>
-                <td class="custom-leave-col1">Covid</td>
-                <td class="custom-leave-col1">Approved</td>
-                <td class="custom-leave-col2">25/09/2022 00:00:00</td>
+                <td class="custom-leave-col1">{{ startdate }}</td>
+                <td class="custom-leave-col1">{{ enddate }}</td>
+                <td class="custom-leave-col1">{{ description }}</td>
+                <td class="custom-leave-col1">{{ status }}</td>
+                <td class="custom-leave-col2">{{ statusdate }} {{ statustime }}</td>
             </tr>
         </table>
 
-        <div class="form-row pt-4">
+        <form class="form-row pt-4" action="/leave/leave-update">
             <div class="text-end">
-                <a href="leave-update.html"><button type="button" class="btn btn-secondary text-white px-md-4 px-2 py-md-2 py-1 radius-0 light-300">Update</button></a>
+                <button type="button" class="btn btn-secondary text-white px-md-4 px-2 py-md-2 py-1 radius-0 light-300">Update</button>
             </div>
-        </div>
+        </form>
         <!-- End Employee Leave View-->
 
     </section>
