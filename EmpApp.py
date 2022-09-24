@@ -121,15 +121,15 @@ def payrollupdateinfo():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         
+        if emp_id == "Employee ID":
+            errorMessage = "Please fill in Employee ID"
+            action = "/payroll/update"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
         try:
             payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
         except Exception as e:
             errorMessage = "Please fill in month and year for payroll"
-            action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action)
-        
-        if emp_id == "Employee ID":
-            errorMessage = "Please fill in Employee ID"
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
