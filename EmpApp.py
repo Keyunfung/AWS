@@ -251,12 +251,11 @@ def generatepayrollresult():
         cursor = db_conn.cursor()
         
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
-        try:
-            cursor.execute(select_sql, (emp_id, payroll_month))
-            if cursor.rowcount != 0:
-                errorMessage = "The payroll for " + emp_id + " exists in " + payroll_month + "."
-                action = "/payroll/generatepayroll"
-                return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        cursor.execute(select_sql, (emp_id, payroll_month))
+        if cursor.rowcount != 0:
+            errorMessage = "The payroll for " + emp_id + " exists in " + payroll_month + "."
+            action = "/payroll/generatepayroll"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
             
         try:
             cursor.execute(insert_sql, (emp_id, work_day, hour_rate, hour_work, payroll_month, monthly_salary))
