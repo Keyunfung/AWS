@@ -177,7 +177,7 @@ def payrollupdateinfoupdatepayroll():
             action = "/payroll/update/info/updatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
-        monthly_salary = workday * hourwork * hourrate
+        monthly_salary = work_day * hour_work * hour_rate
         
         cursor = db_conn.cursor()
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
@@ -186,7 +186,7 @@ def payrollupdateinfoupdatepayroll():
         print("work day")
         for data in data:
             print (data)
-        if workday == select_sql[0] and hourrate == select_sql[1] and hourwork == select_sql[2]:
+        if work_day == select_sql[0] and hour_rate == select_sql[1] and hour_work == select_sql[2]:
             errorMessage = "The payroll is same in the database"
             action = "/payroll/update/info/updatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
