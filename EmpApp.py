@@ -158,7 +158,7 @@ def payrollupdateinfoupdatepayroll():
         
         try:
             work_day = int(request.form['work_day'])
-            if work_day == "Working day per week":
+            if work_day == "":
                 errorMessage = "Please fill in Working day per week"
                 action = "/payroll/update"
                 return render_template('error-message.html', errorMsg = errorMessage, action = action)
@@ -169,7 +169,7 @@ def payrollupdateinfoupdatepayroll():
         
         try:
             hour_rate = float(request.form['hour_rate'])
-            if hour_rate == "Hourly Rate":
+            if hour_rate == "":
                 errorMessage = "Please fill in Hourly Rate"
                 action = "/payroll/update"
                 return render_template('error-message.html', errorMsg = errorMessage, action = action)
@@ -180,7 +180,7 @@ def payrollupdateinfoupdatepayroll():
         
         try:
             hour_work = float(request.form['hour_work'])
-            if hour_work == "Hours Work":
+            if hour_work == "":
                 errorMessage = "Please fill in Hours Work"
                 action = "/payroll/update"
                 return render_template('error-message.html', errorMsg = errorMessage, action = action)
