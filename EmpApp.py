@@ -102,12 +102,11 @@ def payrollupdateinfoupdatepayroll():
         monthly_salary = workday * hourwork * hourrate
         
         cursor = db_conn.cursor()
-        select_sql = "SELECT work_day, hour_rate, hour_work FROM payroll where emp_id = (%s) and payroll_month = (%s)"
-        db_work_day = select_sql[0]
-        db_hour_rate = select_sql[1]
-        db_hour_work = select_sql[2]
+        select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
+        data = select_sql.fetchall()
         print("work day")
-        print(db_work_day)
+        print(data.emp_id)
+        print(data.work_day)
         print("hour rate")
         print(db_hour_rate)
         print("hour work")
