@@ -154,25 +154,14 @@ def payrollupdateinfo():
 def payrollupdateinfoupdatepayroll():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        payroll_month = request.form['payroll_month']
-        
-        if work_day == "Working day per week":
-            errorMessage = "Please fill in Working day per week"
-            action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action)
-        
-        if hour_rate == "Hourly Rate":
-            errorMessage = "Please fill in Hourly Rate"
-            action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action)
-        
-        if hour_work == "Hours Work":
-            errorMessage = "Please fill in Hours Work"
-            action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        payroll_month = request.form['payroll_month']        
         
         try:
             work_day = int(request.form['work_day'])
+            if work_day == "Working day per week":
+                errorMessage = "Please fill in Working day per week"
+                action = "/payroll/update"
+                return render_template('error-message.html', errorMsg = errorMessage, action = action)
         except Exception as e:
             errorMessage = "Invalid input for working day per week"
             action = "/payroll/update"
@@ -180,6 +169,10 @@ def payrollupdateinfoupdatepayroll():
         
         try:
             hour_rate = float(request.form['hour_rate'])
+            if hour_rate == "Hourly Rate":
+                errorMessage = "Please fill in Hourly Rate"
+                action = "/payroll/update"
+                return render_template('error-message.html', errorMsg = errorMessage, action = action)
         except Exception as e:
             errorMessage = "Invalid input for hourly rate"
             action = "/payroll/update"
@@ -187,6 +180,10 @@ def payrollupdateinfoupdatepayroll():
         
         try:
             hour_work = float(request.form['hour_work'])
+            if hour_work == "Hours Work":
+                errorMessage = "Please fill in Hours Work"
+                action = "/payroll/update"
+                return render_template('error-message.html', errorMsg = errorMessage, action = action)
         except Exception as e:
             errorMessage = "Invalid input for hours work"
             action = "/payroll/update"
