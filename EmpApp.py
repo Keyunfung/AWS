@@ -126,12 +126,12 @@ def payrollupdateinfo():
         except Exception as e:
             errorMessage = "Please fill in month and year for payroll"
             action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action, emp_id = '', payroll_month = '')
+            return render_template('error-message.html', errorMsg = errorMessage)
         
         if emp_id == "":
             errorMessage = "Please fill in Employee ID"
             action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action, emp_id = '', payroll_month = '')
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         cursor = db_conn.cursor()
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
@@ -140,7 +140,7 @@ def payrollupdateinfo():
             if cursor.rowcount == 0:
                 errorMessage = "The payroll for " + emp_id + " does not exist in " + payroll_month
                 action = "/payroll/update"
-                return render_template('error-message.html', errorMsg = errorMessage, action = action, emp_id = '', payroll_month = '')
+                return render_template('error-message.html', errorMsg = errorMessage, action = action)
         finally:
             cursor.close()
 
@@ -160,22 +160,22 @@ def payrollupdateinfoupdatepayroll():
             work_day = float(request.form['work_day'])
         except Exception as e:
             errorMessage = "Invalid input for working day per week"
-            action = "/payroll/update/info/updatepayroll"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action, emp_id = emp_id, payroll_month = payroll_month)
+            action = "/payroll/update/info"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             hour_rate = float(request.form['hour_rate'])
         except Exception as e:
             errorMessage = "Invalid input for hourly rate"
-            action = "/payroll/update/info/updatepayroll"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action, emp_id = emp_id, payroll_month = payroll_month)
+            action = "/payroll/update/info"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             hour_work = float(request.form['hour_work'])
         except Exception as e:
             errorMessage = "Invalid input for hours work"
-            action = "/payroll/update/info/updatepayroll"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action, emp_id = emp_id, payroll_month = payroll_month)
+            action = "/payroll/update/info"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         monthly_salary = work_day * hour_work * hour_rate
         
