@@ -121,7 +121,7 @@ def payrollupdateinfo():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         
-        if emp_id == "Employee ID":
+        if emp_id == "":
             errorMessage = "Please fill in Employee ID"
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
