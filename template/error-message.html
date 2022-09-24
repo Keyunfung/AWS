@@ -68,20 +68,27 @@
 		<section class="container py-5">
 		
 		<h1 class="col-12 col-xl-8 h2 text-left text-primary pt-3">{{ errorMsg }}</h1>
-		</br>
-	</br>
-
-        <div class="row pb-4">
+			
+		<div class="form-floating mb-4">
+			<input type="hidden" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="Employee ID" value = '{{ emp_id }}'>
+			<label for="floatingworkday light-300">{{ emp_id }}</label>
+		</div>
+			
+		<div class="form-floating mb-4">
+			<input type="hidden" class="form-control form-control-lg light-300" id="payroll_month" name="payroll_month" placeholder="Payroll Month" value = '{{ payroll_month }}'>
+			<label for="floatingworkday light-300">{{ payroll_month }}</label>
+		</div>
+			
+        	<div class="row pb-4">
 			<form action= {{ action }} autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
-				<div class="col-lg-8 ">
-					<div class="col-md-12 col-12 m-auto text-end">
-						<button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Back</button>
-					</div>															
-
-					</form>
-				</div>
-			</div>
-		</section>
+			<div class="col-lg-8 ">
+				<div class="col-md-12 col-12 m-auto text-end">
+					<button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">Back</button>
+				</div>															
+			</form>
+		</div>
+	</div>
+    </section>
     <!-- End Content -->
 
     <!-- Start Footer -->
