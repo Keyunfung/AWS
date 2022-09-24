@@ -211,35 +211,35 @@ def generatepayrollresult():
         
         if emp_id == "":
             errorMessage = "Please fill in Employee ID"
-            action = "/payroll/update"
+            action = "/payroll/generatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
         except Exception as e:
             errorMessage = "Please fill in month and year for payroll"
-            action = "/payroll/update"
+            action = "/payroll/generatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             work_day = int(request.form['work_day'])
         except Exception as e:
             errorMessage = "Invalid input for working day per week"
-            action = "/payroll/update"
+            action = "/payroll/generatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             hour_rate = float(request.form['hour_rate'])
         except Exception as e:
             errorMessage = "Invalid input for hourly rate"
-            action = "/payroll/update"
+            action = "/payroll/generatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             hour_work = float(request.form['hour_work'])
         except Exception as e:
             errorMessage = "Invalid input for hours work"
-            action = "/payroll/update"
+            action = "/payroll/generatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         monthly_salary = work_day * hour_work * hour_rate
