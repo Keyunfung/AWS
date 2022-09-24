@@ -103,7 +103,8 @@ def payrollupdateinfoupdatepayroll():
         
         cursor = db_conn.cursor()
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
-        data = select_sql.fetchall()
+        cursor.execute(select_sql, (emp_id, payroll_month))
+        data = cursor.fetchall()
         print("work day")
         print(data.emp_id)
         print(data.work_day)
@@ -116,7 +117,8 @@ def payrollupdateinfoupdatepayroll():
             action = "/payroll/update/info/updatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         try:   
-            cursor.execute ("update payroll set monthly_salary = monthly_salary, work_day = work_day, hour_rate = hour_rate, hour_work = hour_work where emp_id = emp_id and payroll_month = payroll_month")
+            update_payroll = "update payroll set monthly_salary = %s, work_day = %s, hour_rate = %s, hour_work = %s where emp_id = %s and payroll_month = %s"
+            cursor.execute(update_payroll, (monthly_salary, work_day, hour_rate, hour_work, emp_id, payroll_month))
         finally:
             db_conn.commit()
             cursor.close()
