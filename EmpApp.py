@@ -103,13 +103,17 @@ def payrollupdateinfoupdatepayroll():
         
         cursor = db_conn.cursor()
         select_sql = "SELECT work_day, hour_rate, hour_work FROM payroll where emp_id = (%s) and payroll_month = (%s)"
+        print(select_sql[0])
+        print(select_sql[1])
+        print(select_sql[2])
         if workday == select_sql[0] and hourrate == select_sql[1] and hourwork == select_sql[2]:
             errorMessage = "The payroll is same in the database"
             action = "/payroll/update/info/updatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
-        try:    
-            cursor.execute ("update payroll set monthly_salary = monthly_salary, work_day = work_day, hour_rate = hour_rate, hour_work = hour_work")
+        try:   
+            cursor.execute ("update payroll set monthly_salary = monthly_salary, work_day = work_day, hour_rate = hour_rate, hour_work = hour_work where emp_id = emp_id and payroll_month = payroll_month")
         finally:
+            db_conn.commit()
             cursor.close()
 
         return render_template('payroll-output.html', title = 'Payroll updated successfully', emp_id = emp_id, payroll_month = payroll_month, monthly_salary = monthly_salary)
