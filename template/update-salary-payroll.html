@@ -76,17 +76,18 @@
 		<form action="/payroll/generatepayroll/results" autocomplete="on" method="POST" enctype="multipart/form-data" class="form-bubble">
 		    <div class="col-lg-8 ">
                     <div class="col-12">
-			    <div class="form-floating mb-4">
-						<input type="hidden" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="Working day per week" value = '{{ emp_id }}'>
-						<label for="floatingworkday light-300">{{ emp_id }}</label>
-					</div>
 					<div class="form-floating mb-4">
 						<input type="text" class="form-control form-control-lg light-300" id="work_day" name="work_day" placeholder="Working day per week" value = '{{ work_day }}'>
 						<label for="floatingworkday light-300">Working day per week</label>
 					</div>
 					</div>
 					<!-- End Input Working day per week -->
-					
+				
+			    			    <div class="form-floating mb-4">
+						<input type="hidden" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="Working day per week" value = '{{ emp_id }}'>
+						<label for="floatingworkday light-300">{{ emp_id }}</label>
+					</div>
+			    
 					<div class="col-12">
 						<div class="form-floating mb-4">
 							<input type="text" class="form-control form-control-lg light-300" id="hour_rate" name="hour_rate" placeholder="Hourly Rate" value = '{{ hour_rate }}'>
@@ -95,6 +96,11 @@
 					</div>
 					<!-- End Input Hourly Rate -->
 
+			    			    <div class="form-floating mb-4">
+						<input type="hidden" class="form-control form-control-lg light-300" id="payroll_month" name="payroll_month" placeholder="Payroll Month = '{{ payroll_month }}'>
+						<label for="floatingworkday light-300">{{ payroll_month }}</label>
+					</div>
+			    
 					<div class="col-12">
 						<div class="form-floating mb-4">
 							<input type="text" class="form-control form-control-lg light-300" id="hour_work" name="hour_work" placeholder="Hours Work" value = '{{ hour_work }}'>
