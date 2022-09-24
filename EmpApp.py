@@ -42,15 +42,16 @@ def payrollupdate():
 def payrollupdateinfo():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
-        
-        if emp_id == "":
-            errorMessage = "Please fill in Employee ID"
+        try:
+            payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
+        except Exception as e:
+            errorMessage = "Please fill in month for payroll"
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
-        if payroll_month == "":
-            errorMessage = "Please fill in month for payroll"
+        
+        if emp_id == "":
+            errorMessage = "Please fill in Employee ID"
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
@@ -59,7 +60,7 @@ def payrollupdateinfo():
         try:
             cursor.execute(select_sql, (emp_id, payroll_month))
             if cursor.rowcount == 0:
-                errorMessage = "The employee ID does not exist"
+                errorMessage = "The payroll for {{ emp_id }} does not exist in {{ payroll_month }}"
                 action = "/payroll/update"
                 return render_template('error-message.html', errorMsg = errorMessage, action = action)
         finally:
