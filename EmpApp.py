@@ -76,7 +76,7 @@ def payrollupdateinfo():
 def payrollupdateinfoupdatepayroll():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
+        payroll_month = request.form['payroll_month']
         
         try:
             workday = float(request.form['work_day'])
