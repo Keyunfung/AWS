@@ -128,7 +128,7 @@ def payrollupdateinfo():
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
-        if emp_id == "":
+        if emp_id == "Employee ID":
             errorMessage = "Please fill in Employee ID"
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
@@ -155,6 +155,21 @@ def payrollupdateinfoupdatepayroll():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         payroll_month = request.form['payroll_month']
+        
+        if work_day == "Working day per week":
+            errorMessage = "Please fill in Working day per week"
+            action = "/payroll/update"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
+        if hour_rate == "Hourly Rate":
+            errorMessage = "Please fill in Hourly Rate"
+            action = "/payroll/update"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
+        if hour_work == "Hours Work":
+            errorMessage = "Please fill in Hours Work"
+            action = "/payroll/update"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             work_day = int(request.form['work_day'])
@@ -183,7 +198,7 @@ def payrollupdateinfoupdatepayroll():
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s) and hour_rate = (%s) and hour_work = (%s) and work_day = (%s)"
         cursor.execute(select_sql, (emp_id, payroll_month, hour_rate, hour_work, work_day))
         if cursor.rowcount != 0:
-            errorMessage = "The payroll is same in the database"
+            errorMessage = "The updated payroll is same in the database"
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
