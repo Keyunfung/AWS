@@ -99,7 +99,7 @@ def payrollupdateinfoupdatepayroll():
             action = "/payroll/update/info/updatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
-        monthly_salary = work_day * hour_work * hour_rate
+        monthly_salary = workday * hourwork * hourrate
         
         cursor = db_conn.cursor()
         select_sql = "SELECT work_day, hour_rate, hour_work FROM payroll where emp_id = (%s) and payroll_month = (%s)"
