@@ -183,7 +183,7 @@ def payrollupdateinfoupdatepayroll():
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
         cursor.execute(select_sql, (emp_id, payroll_month))
         data = cursor.fetchall()
-        print(data[0])
+        print(data[0].work_day)
         for i in data:
             if data[0] == emp_id:
                 data_work_day = data[1]
