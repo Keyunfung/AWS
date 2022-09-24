@@ -188,10 +188,10 @@ def payrollupdateinfoupdatepayroll():
                 data_work_day = work_day
                 data_hour_rate = hour_rate
                 data_hour_work = hour_work
-        if work_day == data_work_day and hour_rate == data_hour_rate and hour_work == data_hour_work:
-            errorMessage = "The payroll is same in the database"
-            action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+                if work_day == data_work_day and hour_rate == data_hour_rate and hour_work == data_hour_work:
+                    errorMessage = "The payroll is same in the database"
+                    action = "/payroll/update"
+                    return render_template('error-message.html', errorMsg = errorMessage, action = action)
         try:   
             update_payroll = "update payroll set monthly_salary = %s, work_day = %s, hour_rate = %s, hour_work = %s where emp_id = %s and payroll_month = %s"
             cursor.execute(update_payroll, (monthly_salary, work_day, hour_rate, hour_work, emp_id, payroll_month))
