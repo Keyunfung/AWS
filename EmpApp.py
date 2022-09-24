@@ -157,7 +157,7 @@ def payrollupdateinfoupdatepayroll():
         payroll_month = request.form['payroll_month']
         
         try:
-            work_day = float(request.form['work_day'])
+            work_day = int(request.form['work_day'])
         except Exception as e:
             errorMessage = "Invalid input for working day per week"
             action = "/payroll/update"
@@ -214,7 +214,7 @@ def payrollupdateinfoupdatepayroll():
 def generatepayrollresult():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        work_day = float(request.form['work_day'])
+        work_day = int(request.form['work_day'])
         hour_rate = float(request.form['hour_rate'])  
         hour_work = float(request.form['hour_work'])
         payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
