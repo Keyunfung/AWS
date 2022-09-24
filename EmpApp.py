@@ -106,12 +106,12 @@ def payrollupdateinfoupdatepayroll():
         cursor.execute(select_sql, (emp_id, payroll_month))
         data = cursor.fetchall()
         print("work day")
-        print(data.emp_id)
-        print(data.work_day)
+        print(data[0])
+        print(data[1])
         print("hour rate")
-        print(db_hour_rate)
+        print(data[2])
         print("hour work")
-        print(db_hour_work)
+        print(data[3])
         if workday == select_sql[0] and hourrate == select_sql[1] and hourwork == select_sql[2]:
             errorMessage = "The payroll is same in the database"
             action = "/payroll/update/info/updatepayroll"
