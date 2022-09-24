@@ -160,21 +160,21 @@ def payrollupdateinfoupdatepayroll():
             work_day = float(request.form['work_day'])
         except Exception as e:
             errorMessage = "Invalid input for working day per week"
-            action = "/payroll/update/info"
+            action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             hour_rate = float(request.form['hour_rate'])
         except Exception as e:
             errorMessage = "Invalid input for hourly rate"
-            action = "/payroll/update/info"
+            action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
             hour_work = float(request.form['hour_work'])
         except Exception as e:
             errorMessage = "Invalid input for hours work"
-            action = "/payroll/update/info"
+            action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         monthly_salary = work_day * hour_work * hour_rate
