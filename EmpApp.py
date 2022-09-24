@@ -180,23 +180,17 @@ def payrollupdateinfoupdatepayroll():
         monthly_salary = work_day * hour_work * hour_rate
         
         cursor = db_conn.cursor()
-        select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
-        cursor.execute(select_sql, (emp_id, payroll_month))
-        data = cursor.fetchall()
-        print(data[0].work_day)
-        for i in data:
-            if data[0] == emp_id:
-                data_work_day = data[1]
-                print(data_work_day)
-                data_hour_rate = data[2]
-                data_hour_work = data[3]
-                if work_day == data_work_day and hour_rate == data_hour_rate and hour_work == data_hour_work:
-                    errorMessage = "The payroll is same in the database"
-                    action = "/payroll/update"
-                    return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s) and hour_rate = (%s) and hour_work = (%s) and work_day = (%s)"
+        cursor.execute(select_sql, (emp_id, payroll_month, hour_rate, hour_work, work_day))
+        if cursor.rowcount != 0:
+            errorMessage = "The payroll is same in the database"
+            action = "/payroll/update"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
         try:   
             update_payroll = "update payroll set monthly_salary = %s, work_day = %s, hour_rate = %s, hour_work = %s where emp_id = %s and payroll_month = %s"
             cursor.execute(update_payroll, (monthly_salary, work_day, hour_rate, hour_work, emp_id, payroll_month))
+        
         finally:
             db_conn.commit()
             cursor.close()
