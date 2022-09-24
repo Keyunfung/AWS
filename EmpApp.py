@@ -50,7 +50,7 @@ def leaveoutput():
         startdate = dt.datetime.strptime(request.form['startdate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
         enddate = dt.datetime.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
         description = request.form['description']
-        status = ""
+        status = "Pending"
         b4format_statusdate = datetime.now()
         b4format_statustime = datetime.now()
         statusdate = b4format_statusdate.strftime("%d-%B-%Y")
