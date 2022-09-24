@@ -76,24 +76,50 @@ def payrollupdateinfo():
 def payrollupdateinfoupdatepayroll():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        work_day = float(request.form['work_day'])
-        hour_rate = float(request.form['hour_rate'])  
-        hour_work = float(request.form['hour_work'])
         payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
+        
+        try:
+            workday = float(request.form['work_day'])
+        except Exception as e:
+            errorMessage = "Invalid input for working day per week"
+            action = "/payroll/update/info/updatepayroll"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
+        try:
+            hourrate = float(request.form['hour_rate'])
+        except Exception as e:
+            errorMessage = "Invalid input for hourly rate"
+            action = "/payroll/update/info/updatepayroll"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
+        try:
+            hourwork = float(request.form['hour_work'])
+        except Exception as e:
+            errorMessage = "Invalid input for hours work"
+            action = "/payroll/update/info/updatepayroll"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
         monthly_salary = work_day * hour_work * hour_rate
         
         cursor = db_conn.cursor()
-        select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
-        try:
+        select_sql = "SELECT work_day, hour_rate, hour_work FROM payroll where emp_id = (%s) and payroll_month = (%s)"
+        if workday == work_day and hourrate == hour_rate and hourwork == hourwork:
+            errorMessage = "The payroll is same in the database"
+            action = "/payroll/update/info/updatepayroll"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        try:    
             cursor.execute ("update payroll set monthly_salary = monthly_salary, work_day = work_day, hour_rate = hour_rate, hour_work = hour_work")
         finally:
             cursor.close()
 
-        return render_template('update-salary-payroll.html', emp_id = emp_id, payroll_month = payroll_month)
+        return render_template('payroll-output.html', title = 'Payroll updated successfully', emp_id = emp_id, payroll_month = payroll_month, monthly_salary = monthly_salary)
     else:
         emp_id = request.args.get('emp_id')
         payroll_month = request.args.get('payroll_month')
-        return render_template('update-salary-payroll.html', emp_id = emp_id, payroll_month = payroll_month)
+        work_day = request.args.get('work_day')
+        hour_rate = request.args.get('hour_rate')
+        hour_work = request.args.get('hour_work')
+        return render_template('payroll-output.html', title = 'Payroll updated successfully', emp_id = emp_id, payroll_month = payroll_month, monthly_salary = monthly_salary)
 
 @app.route("/payroll/generatepayroll/results", methods=['GET','POST'])
 def generatepayrollresult():
@@ -113,8 +139,7 @@ def generatepayrollresult():
         finally:
             cursor.close()
             
-        return render_template('payroll-output.html', title = 'New Payroll added successfully', emp_id = emp_id,
-        payroll_month = payroll_month, monthly_salary = monthly_salary)
+        return render_template('payroll-output.html', title = 'New Payroll added successfully', emp_id = emp_id, payroll_month = payroll_month, monthly_salary = monthly_salary)
     else:
         emp_id = request.args.get('emp_id')
         work_day = request.args.get('work_day')
