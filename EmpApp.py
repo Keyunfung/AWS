@@ -215,13 +215,6 @@ def generatepayrollresult():
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         try:
-            payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
-        except Exception as e:
-            errorMessage = "Please fill in month and year for payroll"
-            action = "/payroll/generatepayroll"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action)
-        
-        try:
             work_day = int(request.form['work_day'])
         except Exception as e:
             errorMessage = "Invalid input for working day per week"
@@ -242,6 +235,13 @@ def generatepayrollresult():
             action = "/payroll/generatepayroll"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
+        try:
+            payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
+        except Exception as e:
+            errorMessage = "Please fill in month and year for payroll"
+            action = "/payroll/generatepayroll"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
+                
         monthly_salary = work_day * hour_work * hour_rate
         
         insert_sql = "INSERT INTO payroll VALUES (%s, %s, %s, %s, %s, %s)"
