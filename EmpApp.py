@@ -183,13 +183,15 @@ def payrollupdateinfoupdatepayroll():
         select_sql = "SELECT * FROM payroll where emp_id = (%s) and payroll_month = (%s)"
         cursor.execute(select_sql, (emp_id, payroll_month))
         data = cursor.fetchall()
-        print("work day")
-        for data in data:
-            print (data[0])
-        if work_day == select_sql[0] and hour_rate == select_sql[1] and hour_work == select_sql[2]:
+        for i in data:
+            if data[0] == emp_id:
+                data_work_day = work_day
+                data_hour_rate = hour_rate
+                data_hour_work = hour_work
+        if work_day == data_work_day and hour_rate == data_hour_rate and hour_work == data_hour_work:
             errorMessage = "The payroll is same in the database"
-            action = "/payroll/update/info/updatepayroll"
-            return render_template('error-message.html', errorMsg = errorMessage, action = action, emp_id = emp_id, payroll_month = payroll_month)
+            action = "/payroll/update"
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         try:   
             update_payroll = "update payroll set monthly_salary = %s, work_day = %s, hour_rate = %s, hour_work = %s where emp_id = %s and payroll_month = %s"
             cursor.execute(update_payroll, (monthly_salary, work_day, hour_rate, hour_work, emp_id, payroll_month))
