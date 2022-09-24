@@ -208,11 +208,6 @@ def payrollupdateinfoupdatepayroll():
 def generatepayrollresult():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        work_day = int(request.form['work_day'])
-        hour_rate = float(request.form['hour_rate'])  
-        hour_work = float(request.form['hour_work'])
-        payroll_month = dt.datetime.strptime(request.form['payroll_month'],'%Y-%m').strftime(format="%B %Y")
-        monthly_salary = work_day * hour_work * hour_rate
         
         if emp_id == "":
             errorMessage = "Please fill in Employee ID"
@@ -246,6 +241,8 @@ def generatepayrollresult():
             errorMessage = "Invalid input for hours work"
             action = "/payroll/update"
             return render_template('error-message.html', errorMsg = errorMessage, action = action)
+        
+        monthly_salary = work_day * hour_work * hour_rate
         
         insert_sql = "INSERT INTO payroll VALUES (%s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
