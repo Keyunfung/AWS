@@ -126,7 +126,7 @@ def payrollupdateinfo():
         except Exception as e:
             errorMessage = "Please fill in month and year for payroll"
             action = "/payroll/update"
-            return render_template('error-message.html', errorMsg = errorMessage)
+            return render_template('error-message.html', errorMsg = errorMessage, action = action)
         
         if emp_id == "":
             errorMessage = "Please fill in Employee ID"
