@@ -21,11 +21,89 @@ db_conn = connections.Connection(
 )
 output = {}
 table = 'employee'
+table = 'leave'
 
 @app.route("/")
 def home():
     return render_template('home.html')
 
+@app.route("/about/", methods=['GET','POST'])
+def about():
+    return render_template('about.html')
+
+@app.route("/employee/", methods=['GET','POST'])
+def employee():
+    return render_template('employee.html')
+
+@app.route("/attendance/", methods=['GET','POST'])
+def attendance():
+    return render_template('attendance.html')
+
+@app.route("/leave/", methods=['GET','POST'])
+def leave():
+    return render_template('leave.html')
+
+@app.route("/leave/output", methods=['GET','POST'])
+def leaveoutput():
+    if request.method == 'POST':
+        emp_id = request.form['emp_id']
+        startdate = dt.strptime(request.form['startdate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
+        enddate = dt.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
+        description = request.form['description']
+        status = ""
+        b4format_statusdate = datetime.now()
+        b4format_statustime = datetime.now()
+        statusdate = b4format_statusdate.strftime("%d-%B-%Y")
+        statustime = b4format_statustime.strftime("%H:%M:%S")
+        insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        cursor = db_conn.cursor()
+        try:
+            cursor.execute(insert_sql, (emp_id, startdate, enddate, description, status, statusdate, statustime))
+            db_conn.commit()
+        finally:
+            cursor.close()
+            
+        return render_template('payroll-output.html', title = 'Employee Leave Added Successfully', emp_id = emp_id)
+    else:
+        emp_id = request.form['emp_id']
+        startdate = request.form['startdate']
+        enddate = request.form['enddate']
+        description = request.form['description']
+        status = request.form['status']
+        b4format_statusdate = datetime.now()
+        b4format_statustime = datetime.now()
+        statusdate = b4format_statusdate.strftime("%d-%B-%Y")
+        statustime = b4format_statustime.strftime("%H:%M:%S")
+        
+        return render_template('leave-output.html', title = 'Employee Leave Added Unsuccessfully')
+
+@app.route("/leave/statusupdate", methods=['GET','POST'])
+def leavestatus():
+    if request.method == 'POST':
+        emp_id = request.form['emp_id']
+        status = request.form['status']
+        b4format_statusdate = datetime.now()
+        b4format_statustime = datetime.now()
+        statusdate = b4format_statusdate.strftime("%d-%B-%Y")
+        statustime = b4format_statustime.strftime("%H:%M:%S")
+        
+        cursor = db_conn.cursor()
+        update_sql = "UPDATE leave SET status = (%(status)s) AND statusdate = (%(statusdate)s) AND statustime = (%(statustime)s) WHERE emp_id = (%(emp_id)s)"
+        try:
+            cursor.execute(select_sql, (emp_id, status, statusdate, statustime))
+            db_conn.commit()
+        finally:
+            cursor.close()
+            
+        return render_template('leave.html')
+    else:
+        emp_id = request.form['emp_id']
+        status = request.form['status']
+        
+        return render_template('leave.html')
+
+
+################### PAYROLL #################################
 @app.route("/payroll/", methods=['GET','POST'])
 def payroll():
     return render_template('payroll.html')
