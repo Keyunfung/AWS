@@ -55,7 +55,7 @@ def leaveoutput():
         leave_status = "Pending"
         leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
         leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
-        insert_sql = "INSERT INTO leavetest VALUES (%s, %s, %s, %s, %s)"
+        insert_sql = "INSERT INTO leavetest VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         
         select_sql = "SELECT * FROM leavetest where leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_status=(%s)"
