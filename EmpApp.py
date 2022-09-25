@@ -81,9 +81,9 @@ def leaveoutput():
 def leaveview():
     if request.method == 'POST':
         countleave = "SELECT count(*) FROM leavetest"
-        select_sql = "SELECT * FROM leavetest"
+        leave_emp_id = "SELECT leave_emp_id FROM leavetest"
             
-        return render_template('leave-view.html', countrows=countleave, leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description, leave_status=leave_status, leave_statusdate=leave_statusdate, leave_statustime=leave_statustime)
+        return render_template('leave-view.html', countrows=countleave, leave_emp_id=leave_emp_id)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
