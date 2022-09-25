@@ -51,8 +51,8 @@ def leaveoutput():
         enddate = dt.datetime.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format="%d-%b-%Y")
         description = request.form['description']
         status = "Pending"
-        statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
-        statustime = dt.datetime.now().strftime(format="%H:%M:%S")
+        statusdate = dt.now().strftime(format="%d-%b-%Y")
+        statustime = dt.now().strftime(format="%H:%M:%S")
         insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         try:
