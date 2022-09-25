@@ -69,26 +69,36 @@
             <h2 class="leave-heading h3 pb-3 light-300 typo-space-line">Employee Leave</h2>
         </div>
 
-        <table class="viewleave custom-leave-tb overflow-hidden">
-            <tr class="custom-leave-row">
-                <th class="custom-leave-col1"><b>EMPLOYEE ID</b></th>
-                <th class="custom-leave-col1"><b>NAME</b></th>
-                <th class="custom-leave-col1"><b>START DATE</b></th>
-                <th class="custom-leave-col1"><b>END DATE</b></th>
-                <th class="custom-leave-col1"><b>DESCRIPTION</b></th>
-                <th class="custom-leave-col1"><b>STATUS</b></th>
-                <th class="custom-leave-col2"><b>UPDATE TIME</b></th>
-            </tr>
-            <tr>
-                <td class="custom-leave-col1">{{ emp_id }}</td>
-                <td class="custom-leave-col1">Name</td>
-                <td class="custom-leave-col1">{{ startdate }}</td>
-                <td class="custom-leave-col1">{{ enddate }}</td>
-                <td class="custom-leave-col1">{{ description }}</td>
-                <td class="custom-leave-col1">{{ status }}</td>
-                <td class="custom-leave-col2">{{ statusdate }} {{ statustime }}</td>
-            </tr>
-        </table>
+        <script>
+            document.write(" <table class='viewleave custom-leave-tb overflow-hidden'>")
+                document.write("<tr class='custom-leave-row'>")
+                    document.write("<th class='custom-leave-col1'> <b>EMPLOYEE ID</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>NAME</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>START DATE</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>END DATE</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>DESCRIPTION</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>STATUS</b> </th> ")
+                    document.write("<th class='custom-leave-col2'> <b>UPDATE TIME</b> </th> ")
+                document.write("</tr>")
+
+                for(rows = 1; rows <= {{ countrows }}; rows++) {
+                    document.write("<tr>")
+                        for(col = 1; col <=6; col++) {
+                            document.write(" <td class='custom-leave-col1'> {{ leave_emp_id }} </td> ")
+                            document.write(" <td class='custom-leave-col1'> {{ leave_emp_name }} </td> ")
+                            document.write(" <td class='custom-leave-col1'> {{ leave_startdate }} </td> ")
+                            document.write(" <td class='custom-leave-col1'> {{ leave_enddate }} </td> ")
+                            document.write(" <td class='custom-leave-col1'> {{ leave_description }} </td> ")
+                            document.write(" <td class='custom-leave-col1'> {{ leave_status }} </td> ")
+                            document.write(" <td class='custom-leave-col1'> {{ leave_statusdate }} </td> ")
+                        }
+                        for(col = 1; col <=1; col++) {
+                            document.write(" <td class='custom-leave-col2'> {{ leave_statustime }}" </td> ")
+                        }
+                    document.write("</tr>")
+                }
+                document.write("</table>")
+        </script>
 
         <form class="form-row pt-4" action="/leave/leave-update">
             <div class="text-end">
