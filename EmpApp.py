@@ -61,7 +61,7 @@ def leaveoutput():
         finally:
             cursor.close()
             
-        return render_template('payroll-output.html', title = 'Employee Leave Added Successfully', emp_id = emp_id)
+        return render_template('leave-output.html', title = 'Employee Leave Added Successfully', emp_id = emp_id)
     else:
         emp_id = request.form['emp_id']
         startdate = request.form['startdate']
