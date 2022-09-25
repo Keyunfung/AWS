@@ -82,7 +82,7 @@ def leaveoutput():
         return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Unsuccessfully')
 
 @app.route("/leave/view", methods=['GET','POST'])
-def leaveviewtest():
+def leaveview():
     if request.method == 'POST':
         cursor = db_conn.cursor()
         countleave = "SELECT count(*) FROM leavetest"
@@ -97,6 +97,8 @@ def leaveviewtest():
                 leave_enddate = row[2]
                 print(leave_emp_id + " " + leave_startdate + " " + leave_enddate + " ")
             db_conn.commit()
+        finally:
+            cursor.close()
           
         return render_template('leave-view.html')
     
