@@ -77,6 +77,14 @@ def leaveoutput():
         
         return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Unsuccessfully')
 
+@app.route("/leave/leave-view", methods=['GET','POST'])
+def leaveview():
+    if request.method == 'POST':
+        countleave = "SELECT count(*) FROM leave"
+        select_sql = "SELECT * FROM leave"
+            
+        return render_template('leave-view.html', countrows=countleave, leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description, leave_status=leave_status, leave_statusdate=leave_statusdate, leave_statustime=leave_statustime)
+    
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
     if request.method == 'POST':
