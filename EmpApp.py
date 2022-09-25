@@ -84,6 +84,9 @@ def leaveoutput():
 @app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
     if request.method == 'POST':
+        leave_emp_id[] = ""
+        leave_startdate[] = ""
+        leave_enddate[] = ""
         cursor = db_conn.cursor()
         countleave = "SELECT count(*) FROM leavetest"
         select_leaveview_sql = "SELECT * FROM leavetest"
@@ -91,34 +94,17 @@ def leaveview():
         try:
             cursor.execute(select_leaveview_sql)
             leave_records = fetchall()
-            document.write(" <table class='custom-leave-tb overflow-hidden'>")
-                document.write("<tr class='custom-leave-row'>")
-                    document.write("<th class='custom-leave-col1'> <b>EMPLOYEE ID</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>NAME</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>START DATE</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>END DATE</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>DESCRIPTION</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>STATUS</b> </th> ")
-                    document.write("<th class='custom-leave-col2'> <b>UPDATE TIME</b> </th> ")
-                document.write("</tr>")
-
-            for(col = 1; col <= {{ countleave }}; col++) {
-                document.write("<tr>")
-                document.write(" <td class='custom-leave-col1'> " + {{ leave_emp_id }} + " </td> ")
-                document.write(" <td class='custom-leave-col1'> " + {{ leave_emp_name }} + " </td> ")
-                document.write(" <td class='custom-leave-col1'> " + {{ leave_startdate }} + " </td> ")
-                document.write(" <td class='custom-leave-col1'> " + {{ leave_enddate }} + " </td> ")
-                document.write(" <td class='custom-leave-col1'> " + {{ leave_description }} + " </td> ")
-                document.write(" <td class='custom-leave-col1'> " + {{ leave_status }} + " </td> ")
-                document.write(" <td class='custom-leave-col2'> " + {{ leave_statusdate }} + {{ leave_statustime }} + " </td> ")
-                document.write("</tr>")
-            }
-            document.write("</table>")
+            
+            for row in leavetest:
+                leave_emp_id[row] = row[0]
+                leave_startdate[row] = row[1]
+                leave_enddate[row] = row[3]
+            
             db_conn.commit()
         finally:
             cursor.close()
           
-        return render_template('leave-view.html')
+        return render_template('leave-view.html', leave_emp_id[]=leave_emp_id[], leave_startdate[]=leave_startdate[], leave_enddate[]=leave_enddate[])
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
