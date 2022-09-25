@@ -66,7 +66,7 @@ def leaveoutput():
         finally:
             cursor.close()
             
-        return render_template('leave-output.html', title = 'Employee Leave Added Successfully', leave_emp_id = leave_emp_id)
+        return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Successfully', leave_emp_id = leave_emp_id)
     else:
         leave_emp_id = request.form['leave_emp_id']
         leave_startdate = request.form['leave_leave_startdate']
@@ -76,7 +76,7 @@ def leaveoutput():
 #         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
 #         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
-        return render_template('leave-output.html', title = 'Employee Leave Added Unsuccessfully')
+        return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Unsuccessfully')
 
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
