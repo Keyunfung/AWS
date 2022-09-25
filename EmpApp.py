@@ -88,11 +88,10 @@ def leaveview():
         leave_startdate = []
         leave_enddate = []
         cursor = db_conn.cursor()
-        countleave = "SELECT count(*) FROM leavetest"
-        select_leaveview_sql = "SELECT * FROM leavetest"
+        select_leaveview_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s)"
       
         try:
-            cursor.execute(select_leaveview_sql)
+            cursor.execute(select_leaveview_sql, leave_emp_id, leave_startdate, leave_enddate)
             leave_records = fetchall()
             
             for row in leavetest:
