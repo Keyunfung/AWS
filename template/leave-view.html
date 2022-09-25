@@ -68,6 +68,32 @@
         <div class="leave-content m-auto text-left justify-content-center">
             <h2 class="leave-heading h3 pb-3 light-300 typo-space-line">Employee Leave</h2>
         </div>
+        
+        <script type="text/javascript">
+            document.write(" <table class='custom-leave-tb overflow-hidden'>")
+                document.write("<tr class='custom-leave-row'>")
+                    document.write("<th class='custom-leave-col1'> <b>EMPLOYEE ID</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>NAME</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>START DATE</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>END DATE</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>DESCRIPTION</b> </th> ")
+                    document.write("<th class='custom-leave-col1'> <b>STATUS</b> </th> ")
+                    document.write("<th class='custom-leave-col2'> <b>UPDATE TIME</b> </th> ")
+                document.write("</tr>")
+
+                for(col = 1; col <= {{len(leave_emp_id}}; col++) {
+                    document.write("<tr>")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_emp_id[col] }} </td> ")
+                    document.write(" <td class='custom-leave-col1'>  leave_emp_name  </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_startdate[col] }} </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_enddate[col] }} </td> ")
+                    document.write(" <td class='custom-leave-col1'>  leave_description  </td> ")
+                    document.write(" <td class='custom-leave-col1'>  leave_status  </td> ")
+                    document.write(" <td class='custom-leave-col2'> 30/Aug-2022 00:00:00 </td> ")
+                    document.write("</tr>")
+                }
+                document.write("</table>")
+        </script>
 
         <form class="form-row pt-4" action="/leave/leave-update">
             <div class="text-end">
