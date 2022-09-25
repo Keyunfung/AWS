@@ -55,12 +55,12 @@ def leaveoutput():
         leave_status = "Pending"
 #         leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
 #         leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
-        insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s)"
+        insert_leave_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         
-        select_sql = "SELECT * FROM leave where leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_status=(%s)"
+        select_leave_sql = "SELECT * FROM leave WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_status=(%s)"
         try:
-            cursor.execute(insert_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status))
+            cursor.execute(insert_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status))
             db_conn.commit()
         finally:
             cursor.close()
