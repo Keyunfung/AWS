@@ -81,23 +81,23 @@ def leaveoutput():
         
         return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Unsuccessfully')
 
-@app.route("/leave/view-test", methods=['GET','POST'])
-def leaveviewtest():
-    if request.method == 'POST':
-        cursor = db_conn.cursor()
-#         countleave = "SELECT count(*) FROM leavetest"
-        select_leaveview_sql = "SELECT * FROM leavetest"
+# @app.route("/leave/view-test", methods=['GET','POST'])
+# def leaveviewtest():
+#     if request.method == 'POST':
+#         cursor = db_conn.cursor()
+# #         countleave = "SELECT count(*) FROM leavetest"
+#         select_leaveview_sql = "SELECT * FROM leavetest"
         
-        try:
-            cursor.execute(select_leaveview_sql)
-            leave_records = fetchall()
-            for row in leavetest:
-                leave_emp_id = row[0]
-                leave_startdate = row[1]
-                leave_enddate = row[2]
-            db_conn.commit()
+#         try:
+#             cursor.execute(select_leaveview_sql)
+#             leave_records = fetchall()
+#             for row in leavetest:
+#                 leave_emp_id = row[0]
+#                 leave_startdate = row[1]
+#                 leave_enddate = row[2]
+#             db_conn.commit()
             
-        return render_template('leave-view.html', countrows=countleave, leave_emp_id=leave_emp_id, leave_startdate=leave_startdate)
+#         return render_template('leave-view.html', countrows=countleave, leave_emp_id=leave_emp_id, leave_startdate=leave_startdate)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
