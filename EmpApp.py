@@ -52,20 +52,20 @@ def leaveoutput():
         leave_startdate = dt.datetime.strptime(dtstartdate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
         leave_enddate = dt.datetime.strptime(dtenddate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
         leave_description = request.form['leave_description']
-#         leave_status = "Pending"
-#         leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
-#         leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
-        insert_leave_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s)"
+        leave_status = "Pending"
+        leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
+        insert_leave_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         
-        select_leave_sql = "SELECT * FROM leave WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s)"
+        select_leave_sql = "SELECT * FROM leave WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_status=(%s)"
         try:
-            cursor.execute(insert_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description))
+            cursor.execute(insert_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status, leave_statusdate, leave_statustime))
             db_conn.commit()
         finally:
             cursor.close()
             
-        return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Successfully', leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description)
+        return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Successfully', leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description, leave_status=leave_status)
     else:
         leave_emp_id = request.form['leave_emp_id']
         leave_startdate = request.form['leave_leave_startdate']
