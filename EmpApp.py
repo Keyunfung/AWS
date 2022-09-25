@@ -77,7 +77,7 @@ def leaveoutput():
         
         return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Unsuccessfully')
 
-@app.route("/leave/leave-view", methods=['GET','POST'])
+@app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
     if request.method == 'POST':
         countleave = "SELECT count(*) FROM leave"
