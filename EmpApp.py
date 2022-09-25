@@ -47,8 +47,8 @@ def leave():
 def leaveoutput():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        startdate = dt.datetime.strptime(request.form['startdate'], '%Y-%m-%d').strftime(format="%d-%b-%Y")
-        enddate = dt.datetime.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format="%d-%b-%Y")
+        startdate = dt.datetime.strptime(request.form['startdate'], '%Y-%m-%d').strftime(format='%d-%b-%Y')
+        enddate = dt.datetime.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format='%d-%b-%Y')
         description = request.form['description']
 #         status = "Pending"
 #         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
