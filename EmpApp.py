@@ -47,16 +47,16 @@ def leave():
 def leaveoutput():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        startdate = dt.datetime.strptime(request.form['startdate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
-        enddate = dt.datetime.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format="%d-%B-%Y")
+        startdate = dt.datetime.strptime(request.form['startdate'], '%Y-%m-%d').strftime(format="%d-%b-%Y")
+        enddate = dt.datetime.strptime(request.form['enddate'], '%Y-%m-%d').strftime(format="%d-%b-%Y")
         description = request.form['description']
-#         status = "Pending"
-        statusdate = dt.datetime.now().strftime("%d-%B-%Y")
-        statustime = dt.datetime.now().strftime("%H:%M:%S")
-        insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s)"
+        status = "Pending"
+        statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        statustime = dt.datetime.now().strftime(format="%H:%M:%S")
+        insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         try:
-            cursor.execute(insert_sql, (emp_id, startdate, enddate, description, statusdate, statustime))
+            cursor.execute(insert_sql, (emp_id, startdate, enddate, description, status, statusdate, statustime))
             db_conn.commit()
         finally:
             cursor.close()
@@ -67,11 +67,9 @@ def leaveoutput():
         startdate = request.form['startdate']
         enddate = request.form['enddate']
         description = request.form['description']
-#         status = request.form['status']
-        b4format_statusdate = dt.datetime.now()
-        b4format_statustime = dt.datetime.now()
-        statusdate = b4format_statusdate.strftime("%d-%B-%Y")
-        statustime = b4format_statustime.strftime("%H:%M:%S")
+        status = " "
+        statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
         return render_template('leave-output.html', title = 'Employee Leave Added Unsuccessfully')
 
@@ -80,10 +78,8 @@ def leavestatus():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         status = request.form['status']
-        b4format_statusdate = dt.datetime.now()
-        b4format_statustime = dt.datetime.now()
-        statusdate = b4format_statusdate.strftime("%d-%B-%Y")
-        statustime = b4format_statustime.strftime("%H:%M:%S")
+        statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
         cursor = db_conn.cursor()
         update_sql = "UPDATE leave SET status = (%(status)s) AND statusdate = (%(statusdate)s) AND statustime = (%(statustime)s) WHERE emp_id = (%(emp_id)s)"
