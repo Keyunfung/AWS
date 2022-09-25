@@ -47,16 +47,18 @@ def leave():
 def leaveoutput():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
-        startdate = dt.datetime.strptime(request.form['startdate'], "%Y-%m-%d").strftime(format="%d-%b-%Y")
-        enddate = dt.datetime.strptime(request.form['enddate'], "%Y-%m-%d").strftime(format="%d-%b-%Y")
+        dtstartdate = request.form['startdate']
+        dtenddate = request.form['enddate']
+        startdate = dt.datetime.strptime(dtstartdate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
+        enddate = dt.datetime.strptime(dtenddate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
         description = request.form['description']
-#         status = "Pending"
+        status = "Pending"
 #         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
 #         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
-        insert_sql = "INSERT INTO leavetest VALUES (%s, %s, %s, %s)"
+        insert_sql = "INSERT INTO leavetest VALUES (%s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         try:
-            cursor.execute(insert_sql, (emp_id, startdate, enddate, description))
+            cursor.execute(insert_sql, (emp_id, startdate, enddate, description, status))
             db_conn.commit()
         finally:
             cursor.close()
@@ -67,7 +69,7 @@ def leaveoutput():
         startdate = request.form['startdate']
         enddate = request.form['enddate']
         description = request.form['description']
-#         status = " "
+        status = " "
 #         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
 #         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
