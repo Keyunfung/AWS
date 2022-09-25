@@ -5,4 +5,84 @@ https://templatemo.com/tm-561-purple-buzz
 
 */
 
+.custom-leave-tb {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.custom-leave-col1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    flex-direction: column;
+    width: 14%;
+    border-right: 1px solid black;
+}
+
+.custom-leave-col2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    flex-direction: column;
+    width: 100%;
+}
+
+.custom-leave-row {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.custom-leavestatusbtn {
+    margin-right: 10px;
+    color: #000;
+    background-color: #ea6262;
+    border-color: #ea6262;
+  }
+  
+  /* line 25, src/assets/scss/mixins/_buttons.scss */
+  .custom-leavestatusbtn:hover {
+    color: #000;
+    background-color: #ed7a7a;
+    border-color: #ec7272;
+  }
+  
+  /* line 31, src/assets/scss/mixins/_buttons.scss */
+  .btn-check:focus + .custom-leavestatusbtn, .custom-leavestatusbtn:focus {
+    color: #000;
+    background-color: #ed7a7a;
+    border-color: #ec7272;
+    -webkit-box-shadow: 0 0 0 0.25rem rgba(199, 83, 83, 0.5);
+            box-shadow: 0 0 0 0.25rem rgba(199, 83, 83, 0.5);
+  }
+  
+  /* line 44, src/assets/scss/mixins/_buttons.scss */
+  .btn-check:checked + .custom-leavestatusbtn,
+  .btn-check:active + .custom-leavestatusbtn, .custom-leavestatusbtn:active, .custom-leavestatusbtn.active,
+  .show > .custom-leavestatusbtn.dropdown-toggle {
+    color: #000;
+    background-color: #ee8181;
+    border-color: #ec7272;
+  }
+  
+  /* line 55, src/assets/scss/mixins/_buttons.scss */
+  .btn-check:checked + .custom-leavestatusbtn:focus,
+  .btn-check:active + .custom-leavestatusbtn:focus, .custom-leavestatusbtn:active:focus, .custom-leavestatusbtn.active:focus,
+  .show > .custom-leavestatusbtn.dropdown-toggle:focus {
+    -webkit-box-shadow: 0 0 0 0.25rem rgba(199, 83, 83, 0.5);
+            box-shadow: 0 0 0 0.25rem rgba(199, 87, 83, 0.5);
+  }
+  
+  /* line 65, src/assets/scss/mixins/_buttons.scss */
+  .custom-leavestatusbtn:disabled, .custom-leavestatusbtn.disabled {
+    color: #000;
+    background-color: #ea6262;
+    border-color: #ea6262;
+  }
 
