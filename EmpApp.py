@@ -84,9 +84,9 @@ def leaveoutput():
 @app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
     if request.method == 'POST':
-        leave_emp_id[] = ""
-        leave_startdate[] = ""
-        leave_enddate[] = ""
+        leave_emp_id = []
+        leave_startdate = []
+        leave_enddate = []
         cursor = db_conn.cursor()
         countleave = "SELECT count(*) FROM leavetest"
         select_leaveview_sql = "SELECT * FROM leavetest"
@@ -96,15 +96,15 @@ def leaveview():
             leave_records = fetchall()
             
             for row in leavetest:
-                leave_emp_id[row] = row[0]
-                leave_startdate[row] = row[1]
-                leave_enddate[row] = row[3]
+                leave_emp_id.append(row[0])
+                leave_startdate.append(row[1])
+                leave_enddate.append(row[2])
             
             db_conn.commit()
         finally:
             cursor.close()
           
-        return render_template('leave-view.html', leave_emp_id[]=leave_emp_id[], leave_startdate[]=leave_startdate[], leave_enddate[]=leave_enddate[])
+        return render_template('leave-view.html', leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
