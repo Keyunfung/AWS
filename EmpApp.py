@@ -58,7 +58,7 @@ def leaveoutput():
         insert_sql = "INSERT INTO leavetest VALUES (%s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         
-        select_sql = "SELECT * FROM leave where leave_emp_id = (%s)"
+        select_sql = "SELECT * FROM leave where emp_id = (%s)"
         cursor.execute(select_sql, (leave_emp_id))
         try:
             cursor.execute(insert_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status))
