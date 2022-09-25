@@ -82,13 +82,13 @@ def leaveview():
     if request.method == 'POST':
         cursor = db_conn.cursor()
         countleave = "SELECT count(*) FROM leavetest"
-        select_leaveview_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s)"
+        select_leaveview_sql = "SELECT * FROM leavetest"
         
         try:
             cursor.execute(select_leaveview_sql, (leave_emp_id, leave_startdate, leave_enddate))
             db_conn.commit()
             
-        return render_template('leave-view.html', countrows=countleave, leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate)
+        return render_template('leave-view.html', countrows=countleave, select_leaveview_sql)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
