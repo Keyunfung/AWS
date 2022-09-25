@@ -53,7 +53,7 @@ def leaveoutput():
         status = "Pending"
         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
-        insert_sql = "INSERT INTO leave %s(emp_id, startdate, enddate, description, status, statusdate, statustime) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        insert_sql = "INSERT INTO leave VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         try:
             cursor.execute(insert_sql, (emp_id, startdate, enddate, description, status, statusdate, statustime))
