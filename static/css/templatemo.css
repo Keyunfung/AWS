@@ -51,7 +51,7 @@ p, a {font-weight: 400;}
 #main_nav .nav-item .nav-link:hover {color: #fff;}
 /* Home */
 #index_banner {
-  background-image: url('./../img/banner-bg-01.jpg');
+  background-image: url('../image/banner-bg-01.jpg');
   background-position: center center; background-size: cover;
   height: 100%;
   min-height: 60vh;
@@ -122,7 +122,7 @@ p, a {font-weight: 400;}
 }
 /* About */
 #work_banner {
-  background-image: url('./../img/banner-bg-02.jpg');
+  background-image: url('../image/banner-bg-02.jpg');
   background-position: center center; background-size: cover;
   height: 100%;
   width: 100%;
@@ -159,7 +159,7 @@ p, a {font-weight: 400;}
 /* Work */
 /* Singel Work */
 #work_single_banner {
-  background-image: url('./../img/banner-bg-02.jpg');
+  background-image: url('../image/banner-bg-02.jpg');
   background-position: center center;
   background-size: cover;
   height: 100%;
