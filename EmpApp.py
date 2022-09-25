@@ -59,7 +59,7 @@ def leaveoutput():
         cursor = db_conn.cursor()
         
         select_sql = "SELECT * FROM leavetest where leave_emp_id = (%s)"
-        cursor.execute(select_sql, (leave_emp_id))
+        cursor.execute(select_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status))
         try:
             cursor.execute(insert_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status))
             db_conn.commit()
