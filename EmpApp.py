@@ -46,30 +46,33 @@ def leave():
 @app.route("/leave/output", methods=['GET','POST'])
 def leaveoutput():
     if request.method == 'POST':
-        emp_id = request.form['emp_id']
-        dtstartdate = request.form['startdate']
-        dtenddate = request.form['enddate']
-        startdate = dt.datetime.strptime(dtstartdate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
-        enddate = dt.datetime.strptime(dtenddate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
-        description = request.form['description']
-        status = "Pending"
+        leave_emp_id = request.form['leave_emp_id']
+        dtstartdate = request.form['leave_startdate']
+        dtenddate = request.form['leave_enddate']
+        leave_startdate = dt.datetime.strptime(dtstartdate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
+        leave_enddate = dt.datetime.strptime(dtenddate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
+        leave_description = request.form['leave_description']
+        leave_status = "Pending"
 #         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
 #         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         insert_sql = "INSERT INTO leavetest VALUES (%s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
+        
+        select_sql = "SELECT * FROM leave where leave_emp_id = (%s)"
+        cursor.execute(select_sql, (emp_id, payroll_month))
         try:
-            cursor.execute(insert_sql, (emp_id, startdate, enddate, description, status))
+            cursor.execute(insert_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status))
             db_conn.commit()
         finally:
             cursor.close()
             
-        return render_template('leave-output.html', title = 'Employee Leave Added Successfully', emp_id = emp_id)
+        return render_template('leave-output.html', title = 'Employee Leave Added Successfully', leave_emp_id = leave_emp_id)
     else:
-        emp_id = request.form['emp_id']
-        startdate = request.form['startdate']
-        enddate = request.form['enddate']
-        description = request.form['description']
-        status = " "
+        leave_emp_id = request.form['leave_emp_id']
+        leave_startdate = request.form['leave_leave_startdate']
+        leave_enddate = request.form['leave_enddate']
+        leave_description = request.form['leave_description']
+        leave_status = " "
 #         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
 #         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
@@ -78,13 +81,13 @@ def leaveoutput():
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
     if request.method == 'POST':
-        emp_id = request.form['emp_id']
-        status = request.form['status']
-        statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
-        statustime = dt.datetime.now().strftime(format="%H:%M:%S")
+        leave_emp_id = request.form['leave_emp_id']
+        leave_status = request.form['leave_status']
+        leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
         cursor = db_conn.cursor()
-        update_sql = "UPDATE leave SET status = (%(status)s) AND statusdate = (%(statusdate)s) AND statustime = (%(statustime)s) WHERE emp_id = (%(emp_id)s)"
+        update_sql = "UPDATE leave SET leave_status = (%(leave_status)s) AND statusdate = (%(statusdate)s) AND statustime = (%(statustime)s) WHERE leave_emp_id = (%(leave_emp_id)s)"
         try:
             cursor.execute(select_sql, (emp_id, status, statusdate, statustime))
             db_conn.commit()
@@ -93,8 +96,8 @@ def leavestatus():
             
         return render_template('leave.html')
     else:
-        emp_id = request.form['emp_id']
-        status = request.form['status']
+        leave_emp_id = request.form['emp_id']
+        leave_status = request.form['status']
         
         return render_template('leave.html')
 
