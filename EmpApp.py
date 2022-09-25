@@ -43,9 +43,9 @@ def attendance():
 def leave():
     return render_template('leave.html')
 
-@app.route("/leave/view", methods=['GET','POST'])
-def leaveview():
-    return render_template('leave-view.html')
+# @app.route("/leave/view", methods=['GET','POST'])
+# def leaveview():
+#     return render_template('leave-view.html')
 
 @app.route("/leave/output", methods=['GET','POST'])
 def leaveoutput():
@@ -81,7 +81,7 @@ def leaveoutput():
         
         return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Unsuccessfully')
 
-@app.route("/leave/view-test", methods=['GET','POST'])
+@app.route("/leave/view", methods=['GET','POST'])
 def leaveviewtest():
     if request.method == 'POST':
         cursor = db_conn.cursor()
