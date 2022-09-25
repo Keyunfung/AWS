@@ -53,14 +53,14 @@ def leaveoutput():
         leave_enddate = dt.datetime.strptime(dtenddate, "%Y-%m-%d").strftime(format="%d-%b-%Y")
         leave_description = request.form['leave_description']
         leave_status = "Pending"
-#         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
-#         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
+        leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         insert_sql = "INSERT INTO leavetest VALUES (%s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
         
         select_sql = "SELECT * FROM leavetest where leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_status=(%s)"
         try:
-            cursor.execute(insert_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status))
+            cursor.execute(insert_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status, leave_statusdate, leave_statustime))
             db_conn.commit()
         finally:
             cursor.close()
@@ -72,8 +72,8 @@ def leaveoutput():
         leave_enddate = request.form['leave_enddate']
         leave_description = request.form['leave_description']
         leave_status = " "
-#         statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
-#         statustime = dt.datetime.now().strftime(format="%H:%M:%S")
+        leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
         return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Unsuccessfully')
 
