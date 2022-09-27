@@ -189,7 +189,7 @@ def leaveview():
                 if leave_view is None:
                     break
                 else:
-                    leave_emp_id.append(leave_view.leave_emp_id)
+                    leave_emp_id.append(leave_view)
 #                     leave_startdate.append(row[1])
 #                     leave_enddate.append(row[2])
             
@@ -197,7 +197,7 @@ def leaveview():
         finally:
             cursor.close()
           
-        return render_template('leave-view.html', leave_emp_id=leave_emp_id)
+        return render_template('leave-view.html', leave_view=leave_view)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
