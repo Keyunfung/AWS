@@ -87,64 +87,68 @@
                     <img class="card-img-top img-eft" src="{{url_for('static',filename='image/our-work-03.jpg')}}">
                 
                     <div class="card-img-overlay">
+                        <div class="custom-row">
+                            <form class="custom-attendance-form" method="POST" action="/leave/" role="form">
 
-                        <form class="custom-attendance-form" method="POST" action="/leave/" role="form">
-
-                            <div class="form-title">
-                                <h1 style="text-align: center; padding-top: 5rem; padding-bottom: 5rem; font-weight: bold;">Employee Attendance </h1>
-
-                                <div class="form-align">
-                                    <div class="form-floating">
-                                        <!--<div class="custom-formtextbox"> -->
-                                        <input type="text" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="emp_id">
-                                        <label for="emp_id light-300">Employee ID</label>
-                                        <!-- </div> -->
+                                <div class="form-title">
+                                    <h1 style="text-align: center; padding-top: 5rem; padding-bottom: 5rem; font-weight: bold;">Employee Attendance </h1>
+    
+                                    <div class="form-align">
+                                        <div class="form-floating">
+                                            <!--<div class="custom-formtextbox"> -->
+                                            <input type="text" class="form-control form-control-lg light-300" id="emp_id" name="emp_id" placeholder="emp_id">
+                                            <label for="emp_id light-300">Employee ID</label>
+                                            <!-- </div> -->
+                                            
+                                        </div>
+                                    </div><!-- End Input Employee ID -->
+                
+                                    <div class="form-align">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control form-control-lg light-300" id="date" name="date" placeholder="mm/dd/yyyy">
+                                            <label for="date light-300">Date (mm/dd/yyyy)</label>
+                                            
+                                        </div>
+                                    </div><!-- End Input Date -->
+                
+                                    <div class="form-align">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control form-control-lg light-300" id="time" name="time" placeholder="time">
+                                            <label for="time light-300">Time</label>
+                                        </div>
+                                    </div><!-- End Input Time -->
+                
+                                    <div class="form-align">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control form-control-lg light-300" id="status" name="status" placeholder="status">
+                                            <label for="status light-300">Status</label>
+                                        </div>
+                                    </div><!-- End Input Status -->
+                
+        
+                
+                                    <div class ="col-md-12 text-center" >
+                                        <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-5 py-2 radius-0 text-light light-300">Submit</button>
+                                        <a method="POST" href="/home">
+                                            <button type="button" class="btn btn-secondary rounded-pill px-md-5 px-5 py-2 radius-0 text-light light-300">Show All
+                                            </button>
+                                        </a>
+                                    
                                         
+                                    
                                     </div>
-                                </div><!-- End Input Employee ID -->
-            
-                                <div class="form-align">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-lg light-300" id="date" name="date" placeholder="mm/dd/yyyy">
-                                        <label for="date light-300">Date (mm/dd/yyyy)</label>
-                                        
-                                    </div>
-                                </div><!-- End Input Date -->
-            
-                                <div class="form-align">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-lg light-300" id="time" name="time" placeholder="time">
-                                        <label for="time light-300">Time</label>
-                                    </div>
-                                </div><!-- End Input Time -->
-            
-                                <div class="form-align">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control form-control-lg light-300" id="status" name="status" placeholder="status">
-                                        <label for="status light-300">Status</label>
-                                    </div>
-                                </div><!-- End Input Status -->
-            
+    
+                                    
+    
+    
+                                </div>
     
             
-                                <div class ="col-md-12 text-center" >
-                                    <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-5 py-2 radius-0 text-light light-300">Submit</button>
-                                    <a method="POST" href="/home">
-                                        <button type="button" class="btn btn-secondary rounded-pill px-md-5 px-5 py-2 radius-0 text-light light-300">Show All
-                                        </button>
-                                    </a>
-                                
-                                    
-                                
-                                </div>
+                            </form>
+                            
+                        </div>
 
-                                
-
-
-                            </div>
-
-        
-                        </form>
+                        
 
                     
                     </div>
