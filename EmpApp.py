@@ -31,14 +31,71 @@ def home():
 def about():
     return render_template('about.html')
 
+################### EMPLOYEE #################################
 @app.route("/employee/", methods=['GET','POST'])
 def employee():
     return render_template('employee.html')
 
+@app.route("/employee/output", methods=['GET','POST'])
+def generatepayrollresult():
+    if request.method == 'POST':
+        emp_id = request.form['emp_id']
+        emp_name = request.form['emp_name']
+        emp_address = request.form['emp_address']
+        emp_email = request.form['emp_email']
+        emp_position = request.form['emp_position']
+        emp_salary = float(request.form['emp_salary'])
+        emp_img = request.files['emp_img']
+        
+         if emp_img.filename == "":
+                return "Please select a file"
+        
+        try:
+            cursor.execute(insert_sql, (emp_id, emp_name, emp_address, emp_email, emp_position, emp_salary, emp_img))
+            db_conn.commit()
+            emp_name = "" + first_name + " " + last_name
+            # Uplaod image file in S3 #
+            emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+            s3 = boto3.resource('s3')
+
+        try:
+            s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_img)
+            bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
+            s3_location = (bucket_location['LocationConstraint'])
+
+            if s3_location is None:
+                s3_location = ''
+            else:
+                s3_location = '-' + s3_location
+
+            object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
+                s3_location,
+                custombucket,
+                emp_image_file_name_in_s3)
+
+        except Exception as e:
+            return str(e)
+
+        finally:
+            cursor.close()
+        return render_template('employee-output.html', emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_email=emp_email, emp_position=emp_position)
+    
+    else:        
+        emp_id = request.args.get('emp_id')
+        emp_name = request.args.get('emp_name')
+        emp_address = request.args.get('emp_address')
+        emp_email = request.args.get('emp_email')
+        emp_position = request.args.get('emp_position')
+        emp_salary = request.args.get('emp_salary')
+        emp_img = request.args.get('emp_img')
+        return render_template('employee-output.html', emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_email=emp_email, emp_position=emp_position)
+
+################### ATTENDANCE #################################
 @app.route("/attendance/", methods=['GET','POST'])
 def attendance():
     return render_template('attendance.html')
 
+################### LEAVE #################################
 @app.route("/leave/", methods=['GET','POST'])
 def leave():
     return render_template('leave.html')
