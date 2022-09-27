@@ -67,13 +67,13 @@
     <!-- Start Employee Account -->
     <section class="container py-5">
         <div class="row pt-5">
-            <div class="leave-content col-lg-8 m-auto text-left justify-content-center">
-                <h2 class="leave-heading h3 pb-3 light-300 typo-space-line">Employee Account</h2>
+            <div class="employee-content col-lg-8 m-auto text-left justify-content-center">
+                <h2 class="employee-heading h3 pb-3 light-300 typo-space-line">Employee Account</h2>
             </div>
         </div>
 
         <div class="row pb-4">
-            <div class="leave-comment-footer col-lg-8 m-auto">
+            <div class="employee-comment-footer col-lg-8 m-auto">
                 <form class="col-md-12 m-auto" method="POST" action="/employee/output" role="form">
 
                     <div class="form-group">
@@ -105,10 +105,15 @@
                         <label class="pb-2 pt-sm-0 pt-4 light-300" for="emp_position">Employee Salary: </label>
                         <input type="text" class="form-control form-control-lg light-300" id="emp_salary" name="emp_salary" placeholder="Salary">
                     </div>
+                    
+                    <div class="form-group">
+                        <label class="pb-2 pt-sm-0 pt-4 light-300" for="emp_img">Employee Image: </label>
+                        <input type="file" id="emp_img" name="emp_img" accept="image/*">
+                    </div>
 
                     <div class="form-row pt-4">
                         <div class="text-end">
-                            <a href="leave-view.html"><button type="button" class="btn btn-secondary text-white px-md-4 px-2 py-md-2 py-1 radius-0 light-300">View All</button></a>
+                            <a href="employee-view.html"><button type="button" class="btn btn-secondary text-white px-md-4 px-2 py-md-2 py-1 radius-0 light-300">View All</button></a>
                             <button type="submit" class="btn btn-secondary text-white px-md-4 px-2 py-md-2 py-1 radius-0 light-300">Confirm</button>
                         </div>
                     </div>
