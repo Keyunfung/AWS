@@ -22,6 +22,7 @@ db_conn = connections.Connection(
 output = {}
 table = 'employee'
 table = 'leave'
+table = 'attendance'
 
 @app.route("/")
 def home():
@@ -86,9 +87,42 @@ def employeeoutput():
         return render_template('employee-output.html', emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_email=emp_email, emp_position=emp_position)
 
 ################### ATTENDANCE #################################
-@app.route("/attendance/", methods=['GET','POST'])
+@app.route("/", methods=['GET', 'POST'])
+def home():
+    return render_template('home.html')
+
+#Insert Attendance
+@app.route("/attendance/", methods=['POST','GET'])
 def attendance():
-    return render_template('attendance.html')
+    if request.method == 'POST': 
+        emp_id = request.form['emp_id']
+        date = request.form['date']
+        time = request.form['time']
+        status = request.form['status']
+
+        if emp_id =='' or date =='' or time =='' or status =='':
+            errorMsg = "Please fill in all the fields"
+            buttonMsg = "HELLO"
+            action = "/attendance/"
+            return render_template('error-message.html',errorMsg=errorMsg,buttonMsg=buttonMsg,action=action)
+
+        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s)"
+        cursor = db_conn.cursor()
+
+        try:
+             cursor.execute(insert_sql, (emp_id, date, time, status))
+             db_conn.commit()
+        except Exception as e:
+            return str(e)
+
+        finally:
+            cursor.close()
+
+        print("all modification done...")
+        return render_template('attendance.html', emp_id=emp_id, date=date, time=time, status=status)
+
+    else:
+      return render_template('attendance.html')
 
 ################### LEAVE #################################
 @app.route("/leave/", methods=['GET','POST'])
