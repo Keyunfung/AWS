@@ -194,7 +194,7 @@ def leaveview():
         finally:
             cursor.close()
           
-        return render_template('leave-view.html', jsonify{leave_emp_id}, jsonify{leave_startdate}, jsonify{leave_enddate})
+        return render_template('leave-view.html', jsonify{leave_emp_id})
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
