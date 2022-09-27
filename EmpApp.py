@@ -87,10 +87,6 @@ def employeeoutput():
         return render_template('employee-output.html', emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_email=emp_email, emp_position=emp_position)
 
 ################### ATTENDANCE #################################
-@app.route("/", methods=['GET', 'POST'])
-def home():
-    return render_template('home.html')
-
 #Insert Attendance
 @app.route("/attendance/", methods=['POST','GET'])
 def attendance():
