@@ -87,13 +87,10 @@ https://templatemo.com/tm-561-purple-buzz
   }
 
 
-@media all and (max-width:700px){
+/* @media all and (max-width:700px){ */
 
     .custom-row{
-        margin-top: 10rem;
-        /* margin-bottom: 10rem;
-        margin-left: 15rem;
-        margin-right: 20rem; */
+        margin: 10rem;
     
     }
     
@@ -116,6 +113,6 @@ https://templatemo.com/tm-561-purple-buzz
 
     }
 
-}
+/* } */
 
 
