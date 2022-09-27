@@ -183,17 +183,17 @@ def leaveview():
       
         try:
             cursor.execute(select_leaveview_sql)
-            
-            for row in leavetest:
-                leave_view = cursor.fetchone()
-                if leave_view is None:
-                    break
-                else:
-                    leave_emp_id.append(leave_view)
+            leave_view = cursor.fetchone()
+#             for row in leavetest:
+#                 leave_view = cursor.fetchone()
+#                 if leave_view is None:
+#                     break
+#                 else:
+#                     leave_emp_id.append(leave_view)
 #                     leave_startdate.append(row[1])
 #                     leave_enddate.append(row[2])
             
-            db_conn.commit()
+#             db_conn.commit()
         finally:
             cursor.close()
           
