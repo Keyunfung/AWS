@@ -175,11 +175,11 @@ def leaveoutput():
 @app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
     cursor = db_conn.cursor()
-        select_leaveview_sql = "SELECT * FROM leavetest"
-      
-        try:
-            cursor.execute(select_leaveview_sql)
-            leave_view = cursor.fetchone()
+    select_leaveview_sql = "SELECT * FROM leavetest"
+
+    try:
+        cursor.execute(select_leaveview_sql)
+        leave_view = cursor.fetchone()
             
 #     if request.method == 'POST':
 #         leave_emp_id = []
@@ -196,10 +196,10 @@ def leaveview():
 #                     leave_enddate.append(row[2])
             
 #             db_conn.commit()
-        finally:
-            cursor.close()
+    finally:
+        cursor.close()
           
-        return render_template('leave-view.html', leave_view=leave_view)
+    return render_template('leave-view.html', leave_view=leave_view)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
