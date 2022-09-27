@@ -198,8 +198,8 @@ def leaveview():
 #                     leave_enddate.append(row[2])
             
             db_conn.commit()
-    finally:
-        cursor.close()
+        finally:
+            cursor.close()
           
     return render_template('leave-view.html', leave_view=leave_view)
     
