@@ -54,8 +54,6 @@ def generatepayrollresult():
             # Uplaod image file in S3 #
             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
             s3 = boto3.resource('s3')
-
-        try:
             s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_img)
             bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
             s3_location = (bucket_location['LocationConstraint'])
