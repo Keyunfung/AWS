@@ -37,7 +37,7 @@ def employee():
     return render_template('employee.html')
 
 @app.route("/employee/output", methods=['GET','POST'])
-def generatepayrollresult():
+def employeeoutput():
     if request.method == 'POST':
         emp_id = request.form['emp_id']
         emp_name = request.form['emp_name']
