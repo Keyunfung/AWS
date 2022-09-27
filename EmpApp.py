@@ -102,7 +102,7 @@ def attendance():
             action = "/attendance/"
             return render_template('error-message.html',errorMsg=errorMsg,buttonMsg=buttonMsg,action=action)
 
-        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s)"
+        insert_sql = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
         cursor = db_conn.cursor()
 
         try:
