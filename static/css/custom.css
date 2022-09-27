@@ -87,10 +87,12 @@ https://templatemo.com/tm-561-purple-buzz
   }
 
 
-@media all and (max-width:700px){
+@media all and (max-width:70%){
+  /*700px*/
 
   .custom-row{
-      margin: 10rem;
+    margin: 50%;
+      /* margin: 10rem; */
   
   }
   
@@ -101,13 +103,13 @@ https://templatemo.com/tm-561-purple-buzz
   .custom-attendance{
       align-items: center;
       justify-content: center;
-      margin: 5;
+      margin: 30%;
   }
   
   .form-align{
-      margin: 5rem;
-      padding-left: 10rem;
-      padding-right: 10rem;
+      margin: 20%;
+      padding-left: 10%;
+      padding-right: 10%;
       align-items: center;
       justify-content: center;
 
