@@ -187,7 +187,7 @@ def leaveview():
             for row in leavetest:
                 leave_view = cursor.fetchone()
                 if leave_view is None:
-                    break;
+                    break
                 else:
                     leave_emp_id.append(leave_view)
 #                     leave_startdate.append(row[1])
