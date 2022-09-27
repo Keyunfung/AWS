@@ -46,10 +46,7 @@ def generatepayrollresult():
         emp_position = request.form['emp_position']
         emp_salary = float(request.form['emp_salary'])
         emp_img = request.files['emp_img']
-        
-     if emp_img.filename == "":
-        return "Please select a file"
-        
+                
     try:
         cursor.execute(insert_sql, (emp_id, emp_name, emp_address, emp_email, emp_position, emp_salary, emp_img))
         db_conn.commit()
