@@ -190,10 +190,11 @@ def leaveview():
 #             leave_view = cursor.fetchone()
             for row in leavetest:
                 leave_view_data = cursor.fetchone()
-                if leave_view is None:
-                    break
-                else:
-                    leave_view.append(leave_view_data)
+                leave_view.append(leave_view_data)
+#                 if leave_view is None:
+#                     break
+#                 else:
+#                     leave_view.append(leave_view_data)
 #                     leave_startdate.append(row[1])
 #                     leave_enddate.append(row[2])
             
