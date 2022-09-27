@@ -175,26 +175,29 @@ def leaveoutput():
 @app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
     if request.method == 'POST':
-        leave_emp_id = ['1', '2', '3', '4', '5']
+        leave_emp_id = []
         leave_startdate = []
         leave_enddate = []
         cursor = db_conn.cursor()
-        select_leaveview_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s)"
+        select_leaveview_sql = "SELECT * FROM leavetest"
       
         try:
-            cursor.execute(select_leaveview_sql, (leave_emp_id, leave_startdate, leave_enddate))
-            leave_records = fetchall()
+            cursor.execute(select_leaveview_sql)
             
             for row in leavetest:
-#                 leave_emp_id.append(row[0])
-                leave_startdate.append(row[1])
-                leave_enddate.append(row[2])
+                leave_view = cursor.fetchone()
+                if leave_view is None:
+                    break;
+                else:
+                    leave_emp_id.append(leave_view)
+#                     leave_startdate.append(row[1])
+#                     leave_enddate.append(row[2])
             
             db_conn.commit()
         finally:
             cursor.close()
           
-        return render_template('leave-view.html', jsonify{leave_emp_id})
+        return render_template('leave-view.html', leave_emp_id)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
