@@ -69,7 +69,7 @@
             <h2 class="leave-heading h3 pb-3 light-300 typo-space-line">Employee Leave</h2>
         </div>
         
-<!--         <table class='custom-leave-tb overflow-hidden'>
+        <table class='custom-leave-tb overflow-hidden'>
             <tr>
                 <th class='custom-leave-col1'> <b>EMPLOYEE ID</b> </th>
                 <th class='custom-leave-col1'> <b>NAME</b> </th>
@@ -81,41 +81,16 @@
             </tr>
             {% for data in leave_view %}
             <tr>
-                <td class='custom-leave-col1'> {{ data[0] }} </td>
-                <td class='custom-leave-col1'>  leave_emp_name  </td>
-                <td class='custom-leave-col1'>  leave_startdate  </td>
-                <td class='custom-leave-col1'>  leave_enddate  </td>
+                <td class='custom-leave-col1'> {{ leave_view[0] }} </td>
+                <td class='custom-leave-col1'> {{leave_view[1] }} </td>
+                <td class='custom-leave-col1'> {{ leave_view[2] }} </td>
+                <td class='custom-leave-col1'> {{ leave_view[3] }} </td>
                 <td class='custom-leave-col1'>  leave_description  </td>
                 <td class='custom-leave-col1'>  leave_status  </td>
                 <td class='custom-leave-col2'> statusdata statustime </td>
             </tr>
             {% endfor %}
-        </table> -->
-        <script type="text/javascript">
-            document.write(" <table class='custom-leave-tb overflow-hidden'>")
-                document.write("<tr class='custom-leave-row'>")
-                    document.write("<th class='custom-leave-col1'> <b>EMPLOYEE ID</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>NAME</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>START DATE</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>END DATE</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>DESCRIPTION</b> </th> ")
-                    document.write("<th class='custom-leave-col1'> <b>STATUS</b> </th> ")
-                    document.write("<th class='custom-leave-col2'> <b>UPDATE TIME</b> </th> ")
-                document.write("</tr>")
-
-                for data in leave_view {
-                    document.write("<tr>")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_view[0] }} </td> ")
-                    document.write(" <td class='custom-leave-col1'>  leave_emp_name  </td> ")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_view[1] }}  </td> ")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_view[2] }} </td> ")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_view[3] }} </td> ")
-                    document.write(" <td class='custom-leave-col1'>  leave_status  </td> ")
-                    document.write(" <td class='custom-leave-col2'> 30/Aug-2022 00:00:00 </td> ")
-                    document.write("</tr>")
-                }
-                document.write("</table>")
-        </script>
+        </table>
 
         <form class="form-row pt-4" action="/leave/leave-update">
             <div class="text-end">
