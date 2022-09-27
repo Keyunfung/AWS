@@ -197,11 +197,11 @@ def leaveview():
 #                     leave_startdate.append(row[1])
 #                     leave_enddate.append(row[2])
             
-            db_conn.commit()
+#             db_conn.commit()
         finally:
             cursor.close()
           
-    return render_template('leave-view.html', leave_view=leave_view)
+    return render_template('leave-view.html', jsonify('leave_view':leave_view))
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
