@@ -103,13 +103,13 @@
                     document.write("<th class='custom-leave-col2'> <b>UPDATE TIME</b> </th> ")
                 document.write("</tr>")
 
-                for data in leave_emp_id {
+                for data in leave_view {
                     document.write("<tr>")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_emp_id }} </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_view[0] }} </td> ")
                     document.write(" <td class='custom-leave-col1'>  leave_emp_name  </td> ")
-                    document.write(" <td class='custom-leave-col1'>  leave_startdate  </td> ")
-                    document.write(" <td class='custom-leave-col1'>  leave_enddate  </td> ")
-                    document.write(" <td class='custom-leave-col1'>  leave_description  </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_view[1] }}  </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_view[2] }} </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_view[3] }} </td> ")
                     document.write(" <td class='custom-leave-col1'>  leave_status  </td> ")
                     document.write(" <td class='custom-leave-col2'> 30/Aug-2022 00:00:00 </td> ")
                     document.write("</tr>")
