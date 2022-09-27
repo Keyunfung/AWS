@@ -92,37 +92,37 @@ def employeeoutput():
 def attendance():
     return render_template('attendance.html')
 
-# @app.route("/attendance/output", methods=['POST','GET'])
-# def attendance_output():
-    # if request.method == 'POST': 
-    #     emp_id = request.form['emp_id']
-    #     date = request.form['date']
-    #     time = request.form['time']
-    #     status = request.form['status']
+@app.route("/attendance/output", methods=['POST'])
+def attendance_output():
+    if request.method == 'POST': 
+        emp_id = request.form['emp_id']
+        date = request.form['date']
+        time = request.form['time']
+        status = request.form['status']
 
-    #     if emp_id =='' or date =='' or time =='' or status =='':
-    #         errorMsg = "Please fill in all the fields"
-    #         buttonMsg = "HELLO"
-    #         action = "/attendance/"
-    #         return render_template('error-message.html',errorMsg=errorMsg,buttonMsg=buttonMsg,action=action)
+        if emp_id =='' or date =='' or time =='' or status =='':
+            errorMsg = "Please fill in all the fields"
+            buttonMsg = "HELLO"
+            action = "/attendance/"
+            return render_template('error-message.html',errorMsg=errorMsg,buttonMsg=buttonMsg,action=action)
 
-    #     insert_sql = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
-    #     cursor = db_conn.cursor()
+        insert_sql = "INSERT INTO attendance VALUES (%s, %s, %s, %s)"
+        cursor = db_conn.cursor()
 
-    #     try:
-    #          cursor.execute(insert_sql, (emp_id, date, time, status))
-    #          db_conn.commit()
-    #     except Exception as e:
-    #         return str(e)
+        try:
+             cursor.execute(insert_sql, (emp_id, date, time, status))
+             db_conn.commit()
+        except Exception as e:
+            return str(e)
 
-    #     finally:
-    #         cursor.close()
+        finally:
+            cursor.close()
 
-    #     print("all modification done...")
-    #     return render_template('attendance.html', emp_id=emp_id, date=date, time=time, status=status)
+        print("all modification done...")
+        return render_template('attendance.html', emp_id=emp_id, date=date, time=time, status=status)
 
-    # else:
-    #   return render_template('attendance.html')
+    else:
+      return render_template('attendance.html')
 
 ################### LEAVE #################################
 @app.route("/leave/", methods=['GET','POST'])
