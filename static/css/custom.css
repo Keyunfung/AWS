@@ -86,33 +86,35 @@ https://templatemo.com/tm-561-purple-buzz
     border-color: #ea6262;
   }
 
-.custom-row{
-    margin-top: 10rem;
-    margin-bottom: 10rem;
-    margin-left: 15rem;
-    margin-right: 20rem;
+
+@media screen and (max-width:960px){
+
+    .custom-row{
+        margin-top: 10rem;
+        margin-bottom: 10rem;
+        margin-left: 15rem;
+        margin-right: 20rem;
+    
+    }
+    
+    .img-eft{
+        filter:blur(5px);
+        background-position-x: right;
+    }
+    
+    .custom-attendance{
+        align-items: center;
+        justify-content: center;
+        margin: 5;
+    }
+    
+    .form-align{
+        margin: 5rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
-.img-eft{
-    filter:blur(5px);
-    background: url('../image/our-work-03.jpg');
-    background-position: center; /* Center the image */
-    background-size: contain; /* Resize the background image to cover the entire container */
-    object-fit: contain;
-    background-position-x: right;
-}
-
-.custom-attendance{
-    align-items: center;
-    justify-content: center;
-    margin: 5;
-}
-
-.form-align{
-    margin: 2rem;
-    padding-left: 10rem;
-    padding-right: 10rem;
-    align-items: center;
-    justify-content: center;
-}
 
