@@ -99,7 +99,7 @@ https://templatemo.com/tm-561-purple-buzz
     
     .img-eft{
         filter:blur(5px);
-        background-position-x: right;
+        width: 100%;
     }
     
     .custom-attendance{
@@ -118,7 +118,8 @@ https://templatemo.com/tm-561-purple-buzz
     }
 
     .custom-formtextbox{
-      width: 100px; height: 20px
+      width: 100px; 
+      margin: 5rem;
     }
 }
 
