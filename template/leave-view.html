@@ -81,12 +81,12 @@
                     document.write("<th class='custom-leave-col2'> <b>UPDATE TIME</b> </th> ")
                 document.write("</tr>")
 
-                for(col = 1; col <= {{len(leave_emp_id}}; col++) {
+                for data in leave_emp_id {
                     document.write("<tr>")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_emp_id[col] }} </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_emp_id }} </td> ")
                     document.write(" <td class='custom-leave-col1'>  leave_emp_name  </td> ")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_startdate[col] }} </td> ")
-                    document.write(" <td class='custom-leave-col1'> {{ leave_enddate[col] }} </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_startdate }} </td> ")
+                    document.write(" <td class='custom-leave-col1'> {{ leave_enddate }} </td> ")
                     document.write(" <td class='custom-leave-col1'>  leave_description  </td> ")
                     document.write(" <td class='custom-leave-col1'>  leave_status  </td> ")
                     document.write(" <td class='custom-leave-col2'> 30/Aug-2022 00:00:00 </td> ")
