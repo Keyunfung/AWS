@@ -175,7 +175,7 @@ def leaveoutput():
 @app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
             
-    if request.method == 'POST':
+#     if request.method == 'POST':
         
 #         leave_emp_id = []
 #         leave_startdate = []
