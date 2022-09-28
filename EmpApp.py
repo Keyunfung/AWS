@@ -175,7 +175,7 @@ def leaveoutput():
 @app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
             
-#     if request.method == 'POST':
+    if request.method == 'POST':
         
 #         leave_emp_id = []
 #         leave_startdate = []
@@ -189,8 +189,15 @@ def leaveview():
         try:
             cursor.execute(select_leaveview_sql)
 #             leave_view = cursor.fetchall()
-#             leave_view = []
-            leave_view = cursor.fetchone()
+            leave_view = []
+            i = 0
+            while True:
+                leave_view_data = cursor.fetchone()
+                if leave_view_data is None:
+                    break
+                else:
+                    leave_view.append(leave_view_data)
+                i += 1
 #             leave_view = cursor.fetchone()
 #             for row in leavetest:
 #                 cursor.execute(select_leaveview_sql)
