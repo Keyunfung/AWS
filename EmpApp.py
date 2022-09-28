@@ -213,7 +213,7 @@ def leaveview():
         finally:
             cursor.close()
           
-    return jsonify({'htmlresponse': render_template('leave-view.html', leave_view=leave_view)})
+    return jsonify({'htmlresponse': render_template('leave-view.html'), 'leave_view':leave_view})
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
