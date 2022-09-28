@@ -46,26 +46,25 @@ def employeeoutput():
         emp_email = request.form['emp_email']
         emp_position = request.form['emp_position']
         emp_salary = float(request.form['emp_salary'])
-        emp_image_file = request.files['emp_image_file']
+        emp_img = request.files['emp_img']
 
         insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
 
-        if emp_image_file.filename == "":
+        if emp_img.filename == "":
             return "Please select a file"
 
         try:
 
             cursor.execute(insert_sql, (emp_id, emp_name, emp_address, emp_email, emp_position, emp_salary))
             db_conn.commit()
-            emp_name = "" + first_name + " " + last_name
             # Uplaod image file in S3 #
             emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
             s3 = boto3.resource('s3')
 
             try:
                 print("Data inserted in MySQL RDS... uploading image to S3...")
-                s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
+                s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_img)
                 bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
                 s3_location = (bucket_location['LocationConstraint'])
 
