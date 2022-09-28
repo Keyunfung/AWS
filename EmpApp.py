@@ -191,7 +191,7 @@ def leaveview():
 @app.route("/leave/updatestatus", methods=['GET','POST'])
 def leavestatus():
     if request.method == 'POST':
-        updated_leave_emp_id = request.form['leave_emp_id']
+#         updated_leave_emp_id = request.form['leave_emp_id']
         updated_leave_status = request.form['leave_status']
         
         updated_leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
@@ -201,7 +201,7 @@ def leavestatus():
         update_leave_sql = "UPDATE leavetest SET leave_status=(%s) AND statusdate=(%s) AND statustime=(%s) WHERE leave_emp_id=(%s)"
         
         try:
-            cursor.execute(update_leave_sql, (updated_leave_status, updated_updated_statusdate, updated_statustime, leave_emp_id))
+            cursor.execute(update_leave_sql, (leave_status, updated_updated_statusdate, updated_statustime, leave_emp_id))
             select_leave_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_statusdate=(%s) and leave_status=(%s) and leave_statustime(%s)"
             cursor.execute(select_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status, updated_updated_statusdate, updated_statustime))
             db_conn.commit()
