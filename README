@@ -1,15 +1,13 @@
-# AWS
-Cloud Computing Assignment
-
 # Install flask on EC2 
 # Either add "sudo" before all commands or use "sudo su" first
 
 #!/bin/bash
+sudo su
 yum update -y
-sudo yum install git
+yum install git -y
 git clone https://github.com/Keyunfung/AWS.git
 cd AWS
-sudo pip3 install flask
-sudo pip3 install pymysql
-sudo pip3 install boto3
-sudo python3 EmpApp.py
+pip3 install flask
+pip3 install pymysql
+pip3 install boto3
+python3 EmpApp.py
