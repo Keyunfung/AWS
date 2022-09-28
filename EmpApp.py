@@ -157,15 +157,15 @@ def employeeoutput():
         return render_template('employee-output.html', emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_salary=emp_salary, emp_email=emp_email, emp_position=emp_position)
 
 ################### ATTENDANCE #################################
-#Insert Attendance
-@app.route("/attendance/", methods=['GET', 'POST'])
+@app.route("/attendance/", methods=['GET','POST'])
 def attendance():
     return render_template('attendance.html')
 
-@app.route("/attendance/output", methods=['POST'])
-def attendance_output():
+#Insert and output 1 Attendance
+@app.route("/attendance/output", methods=['GET','POST'])
+def attendance_input():
     # if request.method == 'POST': 
-        #show
+        #show to output from db
         emp_id = request.form['emp_id']
         date = request.form['date']
         time = request.form['time']
@@ -177,12 +177,11 @@ def attendance_output():
 
         if emp_id =='' or date =='' or time =='' or status =='':
             errorMsg = "Please fill in all the fields"
-            buttonMsg = "HELLO"
+            buttonMsg = "Fields is NULL"
             action = "/attendance/"
             return render_template('error-message.html',errorMsg=errorMsg,buttonMsg=buttonMsg,action=action)
 
         
-
         try:
              cursor.execute(insert_sql, (emp_id, date, time, status))
              db_conn.commit()
@@ -193,10 +192,44 @@ def attendance_output():
             cursor.close()
 
         print("all modification done...")
-        return render_template('attendance.html', emp_id=emp_id, date=date, time=time, status=status)
+        return render_template('attendance-output.html', emp_id=emp_id, date=date, time=time, status=status)
 
-    # else:
-    #   return render_template('attendance.html')
+
+@app.route("/attendance/view", methods=['GET','POST'])
+def attendance_viewAll():
+
+    # emp_id = request.form['emp_id']
+    # if request.method == 'POST':
+        cur = db_conn.cursor()
+        select_attendance_sql = "SELECT * FROM attendance"
+        
+        try:
+            cur.execute(select_attendance_sql)
+
+            attendance_view = []
+
+            while True:
+                attendance_view_data = cur.fetchone()
+                if attendance_view_data is None:
+                    break
+                    # errorMsg = "The data no exist"
+                    # buttonMsg = "Fields is NULL"
+                    # action = "/attendance/"
+                    # return render_template ('error-message.html',errorMsg=errorMsg,buttonMsg=buttonMsg,action=action)
+                
+                else:
+                    attendance_view.append(attendance_view_data)
+
+        except Exception as e:
+            return str(e)
+        
+        finally:
+            cur.close()
+
+        return render_template('attendance-view.html',attendance_view=attendance_view)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=80, debug=True)
 
 ################### LEAVE #################################
 @app.route("/leave/", methods=['GET','POST'])
