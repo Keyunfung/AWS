@@ -69,12 +69,9 @@
             <div class="row d-flex align-items-center py-5">
                 <div class="col-lg-6 text-start">
                     <h1 class="h2 py-5 text-primary typo-space-line">About Us</h1>
-                    <p class="light-300">
-                        Vector illustration credit goes to <a rel="nofollow" href="http://freepik.com/" target="_blank">FreePik</a> website. Purple Buzz is provided by TemplateMo. Lorem ipsum dolor sit amet, consectetur.
-                    </p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="./assets/img/banner-img-02.svg">
+                    <img src="{{ url_for('static', filename='/image/banner-img-02.svg')}}">
                 </div>
             </div>
         </div>
@@ -92,25 +89,25 @@
 
             <div class="col-lg-9 row">
                 <div class="team-member col-md-3">
-                    <img class="team-member-img img-fluid rounded-circle p-3" src="./assets/img/team-01.jpg" alt="Card image">
+                    <img class="team-member-img img-fluid rounded-circle p-3" src="{{ url_for('static', filename='/image/team-01.png')}}" alt="Card image">
                     <ul class="team-member-caption list-unstyled text-center pt-4 text-muted light-300">
                         <li>Cheong Pei Zi</li>
                     </ul>
                 </div>
                 <div class="team-member col-md-3">
-                    <img class="team-member-img img-fluid rounded-circle p-3" src="./assets/img/team-02.jpg" alt="Card image">
+                    <img class="team-member-img img-fluid rounded-circle p-3" src="{{ url_for('static', filename='/image/team-02.png')}}" alt="Card image">
                     <ul class="team-member-caption list-unstyled text-center pt-4 text-muted light-300">
                         <li>Fung Ke Yun</li>
                     </ul>
                 </div>
                 <div class="team-member col-md-3">
-                    <img class="team-member-img img-fluid rounded-circle p-3" src="./assets/img/team-03.jpg" alt="Card image">
+                    <img class="team-member-img img-fluid rounded-circle p-3" src="{{ url_for('static', filename='/image/team-03.png')}}" alt="Card image">
                     <ul class="team-member-caption list-unstyled text-center pt-4 text-muted light-300">
                         <li>Lee Le Hui</li>
                     </ul>
                 </div>
                 <div class="team-member col-md-3">
-                    <img class="team-member-img img-fluid rounded-circle p-3" src="./assets/img/team-03.jpg" alt="Card image">
+                    <img class="team-member-img img-fluid rounded-circle p-3" src="{{ url_for('static', filename='/image/team-04.png')}}" alt="Card image">
                     <ul class="team-member-caption list-unstyled text-center pt-4 text-muted light-300">
                         <li>Lin Hui Fen</li>
                     </ul>
