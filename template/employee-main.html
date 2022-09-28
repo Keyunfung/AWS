@@ -63,12 +63,12 @@
     </nav>
     <!-- Close Header -->
 
-	<!--Start Payroll-->
+	<!--Start Employee-->
     <section class="container overflow-hidden py-5">
-        <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
-            <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
+	    
+	    <div class="col-xl-3 col-md-4 col-sm-6 project employee">
                 <a href="/employee/add" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                    <img class="service card-img" src="{{ url_for('static', filename='/image/our-work-05.jpg')}}" alt="Card image">
+                    <img class="service card-img" type="image/x-icon" src="{{ url_for('static', filename='/image/our-work-05.jpg')}}" alt="Card image">
                     <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="service-work-content text-left text-light">
                             <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Add New Employee</span>
@@ -78,9 +78,9 @@
                 </a>
             </div>
 
-            <div class="col-xl-6 col-md-7 col-sm-9 project ui graphic branding">
+            <div class="col-xl-3 col-md-4 col-sm-6 project employee">
                 <a href="/employee/edit" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                    <img class="card-img" src="{{ url_for('static', filename='/image/recent-work-06.jpg')}}" alt="Card image">
+                    <img class="card-img" type="image/x-icon" src="{{ url_for('static', filename='/image/recent-work-06.jpg')}}" alt="Card image">
                     <div class="service-work-vertical card-img-overlay d-flex align-items-end">
                         <div class="service-work-content text-left text-light">
                             <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Manage Employee</span>
@@ -89,9 +89,21 @@
                     </div>
                 </a>
             </div>
+	    
+	    <div class="col-xl-3 col-md-4 col-sm-6 project employee">
+                <a href="/employee/delete" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
+                    <img class="card-img" src="{{ url_for('static', filename='/image/recent-work-06.jpg')}}" alt="Card image">
+                    <div class="service-work-vertical card-img-overlay d-flex align-items-end">
+                        <div class="service-work-content text-left text-light">
+                            <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Delete Employee</span>
+                            <p class="card-text">Delete existing employee</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     </section>
-	<!-- End Payroll -->
+	<!-- End Employee -->
 
     <!-- Start Footer -->
     <footer class="bg-secondary pt-4">
