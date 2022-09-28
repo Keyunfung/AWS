@@ -186,11 +186,13 @@ def leaveview():
 
         try:
             cursor.execute(select_leaveview_sql)
-            leave_view = []
+            leave_view = cursor.fetchall()
+#             leave_view = []
 #             leave_view = cursor.fetchone()
-            for row in leavetest:
-                leave_view_data = cursor.fetchone()
-                leave_view.append(leave_view_data)
+#             for row in leavetest:
+#                 cursor.execute(select_leaveview_sql)
+#                 leave_view_data = cursor.fetchone()
+#                 leave_view.append(leave_view_data)
 #                 if leave_view is None:
 #                     break
 #                 else:
@@ -202,7 +204,7 @@ def leaveview():
         finally:
             cursor.close()
           
-    return render_template('leave-view.html', jsonify({'leave_view':leave_view}))
+    return render_template('leave-view.html', leave_view=leave_view)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
