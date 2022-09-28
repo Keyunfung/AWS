@@ -57,7 +57,7 @@ def employeeeditoutput():
 
         cursor = db_conn.cursor()
         update_emp = "update employee set emp_id = %s, emp_name = %s, emp_address = %s, emp_email = %s, emp_position = %s, emp_salary = %s where emp_id = %s"
-        cursor.execute(update_payroll, (emp_id, emp_name, emp_address, emp_email, emp_position, emp_salary, emp_id))
+        cursor.execute(update_emp, (emp_id, emp_name, emp_address, emp_email, emp_position, emp_salary, emp_id))
 
         return render_template('employee-output.html', employee_output_title="Employee Updated Successfully", emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_salary=emp_salary, emp_email=emp_email, emp_position=emp_position)
 
