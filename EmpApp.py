@@ -195,7 +195,7 @@ def leavestatus():
         leave_status = request.form['leave_status']
         if leave_status == "Approve":
             update_leave_status = "Approved"
-        else if leave_status == "Reject":
+        elif leave_status == "Reject":
             update_leave_status = "Rejected"
         else:
             update_leave_status = ""
