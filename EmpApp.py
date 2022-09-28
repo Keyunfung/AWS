@@ -192,13 +192,13 @@ def leaveview():
 #             leave_view = []
             leave_view = cursor.fetchone()
 #             leave_view = cursor.fetchone()
-            for row in leavetest:
+#             for row in leavetest:
 #                 cursor.execute(select_leaveview_sql)
                 
 #                 leave_emp_id.append(leave_view.leave_emp_id)
 #                 leave_startdate.append(leave_view.leave_startdate)
 #                 leave_enddate.append(leave_view.leave_enddate)
-                leave_view.append(leave_view)
+#                 leave_view.append(leave_view)
 #                 leave_startdate.append(row[1])
 #                 leave_enddate.append(row[2])
             
