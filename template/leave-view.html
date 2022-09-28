@@ -70,7 +70,7 @@
         </div>
         
         <table class='custom-leave-tb overflow-hidden'>
-            <tr>
+            <tr class='custom-leave-row'>
                 <th class='custom-leave-col1'> <b>EMPLOYEE ID</b> </th>
                 <th class='custom-leave-col1'> <b>NAME</b> </th>
                 <th class='custom-leave-col1'> <b>START DATE</b> </th>
@@ -79,15 +79,15 @@
                 <th class='custom-leave-col1'> <b>STATUS</b> </th>
                 <th class='custom-leave-col2'> <b>UPDATE TIME</b> </th>
             </tr>
-            {% for data in leave_view %}
+            {% for output in leave_view %}
                 <tr>
-                    <td class='custom-leave-col1'> {{ data.leave_emp_id }} </td>
+                    <td class='custom-leave-col1'> {{ output.leave_emp_id }} </td>
                     <td class='custom-leave-col1'> employee name </td>
-                    <td class='custom-leave-col1'> {{ data.leave_startdate }} </td>
-                    <td class='custom-leave-col1'> {{ data.leave_enddate }} </td>
-                    <td class='custom-leave-col1'> {{ data.leave_description }} </td>
-                    <td class='custom-leave-col1'> {{ data.leave_status }} </td>
-                    <td class='custom-leave-col2'> {{ data.leave_statusdate data.leave_statustime }} </td>
+                    <td class='custom-leave-col1'> {{ output.leave_startdate }} </td>
+                    <td class='custom-leave-col1'> {{ output.leave_enddate }} </td>
+                    <td class='custom-leave-col1'> {{ output.leave_description }} </td>
+                    <td class='custom-leave-col1'> {{ output.leave_status }} </td>
+                    <td class='custom-leave-col2'> {{ output.leave_statusdate data.leave_statustime }} </td>
                 </tr>
             {% endfor %}
         </table>
