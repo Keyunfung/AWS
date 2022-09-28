@@ -291,7 +291,7 @@ def leaveview():
 @app.route("/leave/updatestatus", methods=['GET','POST'])
 def leavestatus():
     if request.method == 'POST':
-        leave_emp_id = request.form['leave_emp_id']
+        leave_emp_id = request.form['emp_id']
         if request.form['approve'] == 'Approve':
             leave_status = 'Approved'
         elif request.form['reject'] == 'Reject':
