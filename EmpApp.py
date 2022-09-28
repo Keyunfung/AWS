@@ -186,8 +186,8 @@ def leaveview():
         
 
         try:
-            cursor.execute("SELECT * FROM leavetest")
-            leave_view = cursor.fetchall()
+#             cursor.execute("SELECT * FROM leavetest")
+#             leave_view = cursor.fetchall()
             leave_emp_id = ['1', '2', '3']
 #             leave_view = []
 #             leave_view = cursor.fetchone()
