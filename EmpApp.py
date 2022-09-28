@@ -5,7 +5,6 @@ import os
 import boto3
 from config import *
 import datetime as dt
-from flask import jsonify
 
 app=Flask(__name__,template_folder='template')
 
@@ -134,10 +133,6 @@ def attendance_output():
 def leave():
     return render_template('leave.html')
 
-# @app.route("/leave/view", methods=['GET','POST'])
-# def leaveview():
-#     return render_template('leave-view.html')
-
 @app.route("/leave/output", methods=['GET','POST'])
 def leaveoutput():
     if request.method == 'POST':
@@ -179,7 +174,6 @@ def leaveview():
 
     try:
         cursor.execute(select_leaveview_sql)
-#             leave_view = cursor.fetchall()
         leave_view = []
         i = 0
         while True:
@@ -197,25 +191,29 @@ def leaveview():
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
     if request.method == 'POST':
-        leave_emp_id = request.form['leave_emp_id']
-        leave_status = request.form['leave_status']
-        leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
-        leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
+        updated_leave_emp_id = request.form['leave_emp_id']
+        updated_leave_status = request.form['leave_status']
+        
+        updated_leave_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
+        updated_leave_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
         
         cursor = db_conn.cursor()
-        update_sql = "UPDATE leave SET leave_status = (%(leave_status)s) AND statusdate = (%(statusdate)s) AND statustime = (%(statustime)s) WHERE leave_emp_id = (%(leave_emp_id)s)"
+        update_leave_sql = "UPDATE leavetest SET leave_status=(%s) AND statusdate=(%s) AND statustime=(%s) WHERE leave_emp_id=(%s)"
+        
         try:
-            cursor.execute(select_sql, (emp_id, status, statusdate, statustime))
+            cursor.execute(update_leave_sql, (updated_leave_status, updated_updated_statusdate, updated_statustime, leave_emp_id))
+            select_leave_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_statusdate=(%s) and leave_status=(%s) and leave_statustime(%s)"
+            cursor.execute(select_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status=leave_status, updated_updated_statusdate, updated_statustime))
             db_conn.commit()
         finally:
             cursor.close()
             
-        return render_template('leave.html')
+        return render_template('leave-output.html', leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status, leave_statusdate, leave_statustime)
     else:
         leave_emp_id = request.form['emp_id']
         leave_status = request.form['status']
         
-        return render_template('leave.html')
+        return render_template('leave-output.html')
 
 
 ################### PAYROLL #################################
