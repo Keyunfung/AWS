@@ -203,7 +203,7 @@ def leavestatus():
         try:
             cursor.execute(update_leave_sql, (updated_leave_status, updated_updated_statusdate, updated_statustime, leave_emp_id))
             select_leave_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_statusdate=(%s) and leave_status=(%s) and leave_statustime(%s)"
-            cursor.execute(select_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status=leave_status, updated_updated_statusdate, updated_statustime))
+            cursor.execute(select_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status, updated_updated_statusdate, updated_statustime))
             db_conn.commit()
         finally:
             cursor.close()
