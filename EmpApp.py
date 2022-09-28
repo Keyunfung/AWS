@@ -208,12 +208,12 @@ def leavestatus():
         finally:
             cursor.close()
             
-        return render_template('leave-output.html', leave_emp_id, leave_startdate, leave_enddate, leave_description, leave_status, leave_statusdate, leave_statustime)
+        return render_template('leave-output.html', leave_output_title = 'Employee Leave Updated', leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description, leave_status=leave_status)
     else:
         leave_emp_id = request.form['emp_id']
         leave_status = request.form['status']
         
-        return render_template('leave-output.html')
+        return render_template('leave-output.html', leave_output_title = 'Employee Leave Update Unsuccessfully')
 
 
 ################### PAYROLL #################################
