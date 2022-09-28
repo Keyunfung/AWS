@@ -84,7 +84,7 @@ def employeeoutput():
         finally:
             cursor.close()
 
-        return render_template('employee-output.html', emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_salary=emp_salary, emp_email=emp_email, emp_position=emp_position)
+        return render_template('employee-output.html', employee_output_title="New Employee Added Successfully", emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_salary=emp_salary, emp_email=emp_email, emp_position=emp_position)
 
     else:        
         emp_id = request.args.get('emp_id')
