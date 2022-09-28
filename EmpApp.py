@@ -48,7 +48,7 @@ def employeeoutput():
         emp_salary = float(request.form['emp_salary'])
         emp_img = request.files['emp_img']
 
-        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s)"
         cursor = db_conn.cursor()
 
         if emp_img.filename == "":
