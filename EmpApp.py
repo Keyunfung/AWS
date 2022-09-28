@@ -287,38 +287,6 @@ def leaveview():
         cursor.close()
           
     return render_template('leave-view.html', leave_view=leave_view)
-    
-@app.route("/leave/updatestatus", methods=['GET','POST'])
-def leavestatus():
-    if request.method == 'POST':
-        leave_emp_id = request.form['emp_id']
-        if request.form['approve'] == 'Approve':
-            leave_status = 'Approved'
-        elif request.form['reject'] == 'Reject':
-            leave_status = 'Rejected'
-        else:
-            update_leave_status = ""
-        
-        updated_statusdate = dt.datetime.now().strftime(format="%d-%b-%Y")
-        updated_statustime = dt.datetime.now().strftime(format="%H:%M:%S")
-        
-        cursor = db_conn.cursor()
-        update_leave_sql = "UPDATE leavetest SET leave_status=(%s) AND statusdate=(%s) AND statustime=(%s) WHERE leave_emp_id=(%s)"
-        
-        try:
-            cursor.execute(update_leave_sql, (leave_status, updated_statusdate, updated_statustime, leave_emp_id))
-            select_leave_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_statusdate=(%s) and leave_status=(%s) and leave_statustime(%s)"
-            cursor.execute(select_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, update_leave_status, updated_statusdate, updated_statustime))
-            db_conn.commit()
-        finally:
-            cursor.close()
-            
-        return render_template('leave-output-status.html', leave_status = leave_status)
-    else:
-        leave_emp_id = request.form['emp_id']
-        leave_status = request.form['status']
-        
-        return render_template('leave-output-status.html', leave_output_title = 'Employee Leave Update Unsuccessfully')
 
 
 ################### PAYROLL #################################
