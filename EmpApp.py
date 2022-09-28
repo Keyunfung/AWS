@@ -189,7 +189,7 @@ def leaveview():
         try:
             cursor.execute(select_leaveview_sql)
 #             leave_view = cursor.fetchall()
-            leave_view = []
+#             leave_view = []
             i = 0
             while True:
                 leave_view_data = cursor.fetchone()
