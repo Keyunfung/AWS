@@ -54,7 +54,7 @@ def employeedeleteoutput():
 
     emp_id = request.form['emp_id']
 
-    delete_statement = "delete FROM employee WHERE emp_id = emp_id"
+    delete_statement = "delete from employee where emp_id = emp_id"
     cursor = db_conn.cursor()
     cursor.execute(delete_statement, (emp_id))
     cursor.close()
