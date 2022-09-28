@@ -188,7 +188,7 @@ def leaveview():
           
     return render_template('leave-view.html', leave_view=leave_view)
     
-@app.route("/leave/statusupdate", methods=['GET','POST'])
+@app.route("/leave/updatestatus", methods=['GET','POST'])
 def leavestatus():
     if request.method == 'POST':
         updated_leave_emp_id = request.form['leave_emp_id']
