@@ -182,11 +182,12 @@ def leaveview():
 #         leave_enddate = []
         
         cursor = db_conn.cursor()
-        select_leaveview_sql = "SELECT * FROM leavetest"
+#         select_leaveview_sql = 
+        cursor.execute("SELECT * FROM leavetest")
+        leave_view = cursor.fetchall()
 
-        try:
-            cursor.execute(select_leaveview_sql)
-            leave_view = cursor.fetchall()
+#         try:
+            
 #             leave_view = []
 #             leave_view = cursor.fetchone()
 #             for row in leavetest:
@@ -201,7 +202,7 @@ def leaveview():
 #                     leave_enddate.append(row[2])
             
 #             db_conn.commit()
-        finally:
+#         finally:
             cursor.close()
           
     return render_template('leave-view.html', leave_view=leave_view)
