@@ -174,44 +174,23 @@ def leaveoutput():
 
 @app.route("/leave/view", methods=['GET','POST'])
 def leaveview():
-            
-#     if request.method == 'POST':
-        
-#         leave_emp_id = []
-#         leave_startdate = []
-#         leave_enddate = []
-        
-        cursor = db_conn.cursor()
-#         count_leave = "SELECT count(*) FROM leavetest"
-        select_leaveview_sql = "SELECT * FROM leavetest"
-        
+    cursor = db_conn.cursor()
+    select_leaveview_sql = "SELECT * FROM leavetest"
 
-        try:
-            cursor.execute(select_leaveview_sql)
+    try:
+        cursor.execute(select_leaveview_sql)
 #             leave_view = cursor.fetchall()
-            leave_view = []
-            i = 0
-            while True:
-                leave_view_data = cursor.fetchone()
-                if leave_view_data is None:
-                    break
-                else:
-                    leave_view.append(leave_view_data)
-                i += 1
-#             leave_view = cursor.fetchone()
-#             for row in leavetest:
-#                 cursor.execute(select_leaveview_sql)
-                
-#                 leave_emp_id.append(leave_view.leave_emp_id)
-#                 leave_startdate.append(leave_view.leave_startdate)
-#                 leave_enddate.append(leave_view.leave_enddate)
-#                 leave_view.append(leave_view)
-#                 leave_startdate.append(row[1])
-#                 leave_enddate.append(row[2])
-            
-#             db_conn.commit()
-        finally:
-            cursor.close()
+        leave_view = []
+        i = 0
+        while True:
+            leave_view_data = cursor.fetchone()
+            if leave_view_data is None:
+                break
+            else:
+                leave_view.append(leave_view_data)
+            i += 1
+    finally:
+        cursor.close()
           
     return jsonify({'htmlresponse': render_template('leave-view.html', leave_view=leave_view})
     
