@@ -293,9 +293,9 @@ def leavestatus():
     if request.method == 'POST':
         leave_emp_id = request.form['leave_emp_id']
         if request.form['approve'] == 'Approve':
-            update_leave_status = 'Approved'
+            leave_status = 'Approved'
         elif request.form['reject'] == 'Reject':
-            update_leave_status = 'Rejected'
+            leave_status = 'Rejected'
         else:
             update_leave_status = ""
         
@@ -306,19 +306,19 @@ def leavestatus():
         update_leave_sql = "UPDATE leavetest SET leave_status=(%s) AND statusdate=(%s) AND statustime=(%s) WHERE leave_emp_id=(%s)"
         
         try:
-            cursor.execute(update_leave_sql, (update_leave_status, updated_statusdate, updated_statustime, leave_emp_id))
+            cursor.execute(update_leave_sql, (leave_status, updated_statusdate, updated_statustime, leave_emp_id))
             select_leave_sql = "SELECT * FROM leavetest WHERE leave_emp_id=(%s) and leave_startdate=(%s) and leave_enddate=(%s) and leave_description=(%s) and leave_statusdate=(%s) and leave_status=(%s) and leave_statustime(%s)"
             cursor.execute(select_leave_sql, (leave_emp_id, leave_startdate, leave_enddate, leave_description, update_leave_status, updated_statusdate, updated_statustime))
             db_conn.commit()
         finally:
             cursor.close()
             
-        return render_template('leave-output.html', leave_output_title = 'Employee Leave Updated', leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description, leave_status=leave_status)
+        return render_template('leave-output-status.html', leave_status = leave_status)
     else:
         leave_emp_id = request.form['emp_id']
         leave_status = request.form['status']
         
-        return render_template('leave-output.html', leave_output_title = 'Employee Leave Update Unsuccessfully')
+        return render_template('leave-output-status.html', leave_output_title = 'Employee Leave Update Unsuccessfully')
 
 
 ################### PAYROLL #################################
