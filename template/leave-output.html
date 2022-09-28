@@ -81,7 +81,7 @@
                 <h3 class="h4 pb-2 light-300">Status</h3>
             </div>
             <div>
-                <h3 class="h4 pb-2 light-300" name={{leave_emp_id}}>&ensp;:&ensp;{{ leave_emp_id }}</h3>
+                <h3 class="h4 pb-2 light-300">&ensp;:&ensp;{{ leave_emp_id }}</h3>
                 <h3 class="h4 pb-2 light-300">&ensp;:&ensp;emp_name</h3>
                 <h3 class="h4 pb-2 light-300">&ensp;:&ensp;{{ leave_startdate }}</h3>
                 <h3 class="h4 pb-2 light-300">&ensp;:&ensp;{{ leave_enddate }}</h3>
@@ -93,8 +93,8 @@
         <div class="form-row pt-2">
             <form class="col-md-12 m-auto" method="POST" onsubmit="leavestatus()" action="/leave/updatestatus" role="form">
                 <div class="col-md-12 col-12 px-md-5 container-fluid text-light d-flex justify-content-center align-items-center">
-                    <input type="submit" name="reject", value="Reject" class="btn custom-leavestatusbtn text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300"></input>
-                    <input type="submit" name="approve", value="Approve" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300"></input>
+                    <input type="submit" id="reject", value="Reject" class="btn custom-leavestatusbtn text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">
+                    <input type="submit" id="approve", value="Approve" class="btn btn-secondary text-white px-md-4 px-2 py-md-3 py-1 radius-0 light-300">
                 </div>
             </form>
         </div>
