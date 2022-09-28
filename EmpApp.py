@@ -228,9 +228,6 @@ def attendance_viewAll():
 
         return render_template('attendance-view.html',attendance_view=attendance_view)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
-
 ################### LEAVE #################################
 @app.route("/leave/", methods=['GET','POST'])
 def leave():
