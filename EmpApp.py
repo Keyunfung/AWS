@@ -191,9 +191,9 @@ def leaveview():
 @app.route("/leave/updatestatus", methods=['GET','POST'])
 def leavestatus():
     if request.method == 'POST':
-        if request.form['leave_status'] == 'Approve':
+        if request.form['approve'] == 'Approve':
             update_leave_status = 'Approved'
-        elif request.form['leave_status'] == 'Reject':
+        elif request.form['reject'] == 'Reject':
             update_leave_status = 'Rejected'
         else:
             update_leave_status = ""
