@@ -182,13 +182,14 @@ def leaveview():
 #         leave_enddate = []
         
         cursor = db_conn.cursor()
+#         count_leave = "SELECT count(*) FROM leavetest"
         select_leaveview_sql = "SELECT * FROM leavetest"
         
 
         try:
             cursor.execute(select_leaveview_sql)
 #             leave_view = cursor.fetchall()
-            leave_view = []
+#             leave_view = []
 #             leave_view = cursor.fetchone()
             for row in leavetest:
                 cursor.execute(select_leaveview_sql)
@@ -207,7 +208,7 @@ def leaveview():
         finally:
             cursor.close()
           
-    return render_template('leave-view.html', leave_emp_id=leave_emp_id)
+    return render_template('leave-view.html', leave_view=leave_view, leave_emp_id=leave_emp_id)
     
 @app.route("/leave/statusupdate", methods=['GET','POST'])
 def leavestatus():
