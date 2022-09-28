@@ -35,7 +35,40 @@ def about():
 ################### EMPLOYEE #################################
 @app.route("/employee/", methods=['GET','POST'])
 def employee():
+    return render_template('employee-main.html')
+
+@app.route("/employee/add", methods=['GET','POST'])
+def employeeadd():
     return render_template('employee.html')
+
+@app.route("/employee/edit", methods=['GET','POST'])
+def employeeedit():
+    return render_template('update-employee.html')
+
+@app.route("/employee/edit/output", methods=['GET','POST'])
+def employeeeditoutput():
+    if request.method == 'POST':
+        emp_id = request.form['emp_id']
+        emp_name = request.form['emp_name']
+        emp_address = request.form['emp_address']
+        emp_email = request.form['emp_email']
+        emp_position = request.form['emp_position']
+        emp_salary = float(request.form['emp_salary'])
+
+        cursor = db_conn.cursor()
+        update_emp = "update employee set emp_id = %s, emp_name = %s, emp_address = %s, emp_email = %s, emp_position = %s, emp_salary = %s where emp_id = %s"
+        cursor.execute(update_payroll, (emp_id, emp_name, emp_address, emp_email, emp_position, emp_salary, emp_id))
+
+        return render_template('employee-output.html', employee_output_title="Employee Updated Successfully", emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_salary=emp_salary, emp_email=emp_email, emp_position=emp_position)
+
+    else:        
+        emp_id = request.args.get('emp_id')
+        emp_name = request.args.get('emp_name')
+        emp_address = request.args.get('emp_address')
+        emp_email = request.args.get('emp_email')
+        emp_position = request.args.get('emp_position')
+        emp_salary = request.args.get('emp_salary')
+        return render_template('employee-output.html', employee_output_title="Employee Updated Successfully", emp_id=emp_id, emp_name=emp_name, emp_address=emp_address, emp_salary=emp_salary, emp_email=emp_email, emp_position=emp_position)
 
 @app.route("/employee/output", methods=['GET','POST'])
 def employeeoutput():
