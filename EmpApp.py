@@ -45,6 +45,36 @@ def employeeadd():
 def employeeedit():
     return render_template('update-employee.html')
 
+@app.route("/employee/delete", methods=['GET', 'POST'])
+def employeedelete():
+    return render_template('delete-employee.html')
+
+@app.route("/employee/delete/output", methods=['GET', 'POST'])
+def employeedeleteoutput():
+
+    emp_id = request.form['emp_id']
+
+    select_sql = "SELECT emp_id FROM employee WHERE emp_id = %(emp_id)s"
+    delete_statement = "DELETE FROM employee WHERE emp_id = %(emp_id)s"
+    cursor = db_conn.cursor()
+    cursor.execute(delete_statement, (emp_id))
+        
+    finally:
+        cursor.close()
+
+    db_conn.commit()
+
+    #Delete S3 picture
+    emp_image_file_name_in_s3 = "emp-id-" + str(emp_id) + "_image_file"
+    s3_client = boto3.client('s3')
+
+    try:
+        s3_client.delete_object(Bucket=custombucket, Key=emp_image_file_name_in_s3)
+        return render_template("employeedelete.html", emp_id = emp_id)
+
+    except Exception as e:
+        return str(e)
+
 @app.route("/employee/edit/output", methods=['GET','POST'])
 def employeeeditoutput():
     if request.method == 'POST':
