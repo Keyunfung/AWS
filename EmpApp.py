@@ -255,7 +255,7 @@ def leaveoutput():
         finally:
             cursor.close()
             
-        return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Successfully', leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description, leave_status=leave_status)
+        return render_template('leave-output.html', leave_output_title = 'Employee Leave Added Successfully', emp_id=leave_emp_id, leave_emp_id=leave_emp_id, leave_startdate=leave_startdate, leave_enddate=leave_enddate, leave_description=leave_description, leave_status=leave_status)
     else:
         leave_emp_id = request.form['leave_emp_id']
         leave_startdate = request.form['leave_leave_startdate']
